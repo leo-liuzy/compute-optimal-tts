@@ -16,9 +16,17 @@
 
 
 
+## 🏆 Results
+
+<img src="./static/images/MATH_co_abs.png" alt="" style="max-width: 100%; height: auto;" id="MATH_co_abs">
+
+
+
+
+
 ## 🚀 Getting Started
 
-We are on a tight budget to clean the code. If you want to try the power of TTS, you can refer to [openr](https://github.com/openreasoner/openr), an open-source LLM reasoning repository that we largely refer to.
+We are on a tight budget to clean the code. If you want to try the power of TTS quickly, you can refer to [openr](https://github.com/openreasoner/openr), an open-source LLM reasoning repository that we largely refer to.
 
 
 
@@ -37,7 +45,7 @@ We are on a tight budget to clean the code. If you want to try the power of TTS,
 
 
 
-## 🏅 Acknowledgement
+## 💡 Acknowledgement
 
 Our code is largely based on [openr](https://github.com/openreasoner/openr), an awesome LLM reasoning repository, and their work has been instrumental in our study. We also want to thank the community for providing high-quality open-source PRMs, including [Qwen2.5-Math](https://huggingface.co/collections/Qwen/qwen25-math-66eaa240a1b7d5ee65f1da3e), [Skywork-o1](https://huggingface.co/collections/Skywork/skywork-o1-open-67453df58e12f6c3934738d0), [RLHFlow](https://huggingface.co/collections/RLHFlow/rlhflow-math-process-reward-model-6725a42fc8808e12aa1cb144), and [Math-Shepherd](https://huggingface.co/peiyi9979/math-shepherd-mistral-7b-prm).
 
