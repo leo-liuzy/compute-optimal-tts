@@ -1,8 +1,41 @@
-# compute-optimal tts
+# Compute-Optimal Test-Time Scaling
+
+[![arXiv](https://img.shields.io/badge/arXiv-2502.06703-ff0000.svg?style=for-the-badge)](https://arxiv.org/abs/2502.06703)  [![Website](https://img.shields.io/badge/Project_Page-000acc?style=for-the-badge&logo=githubpages&logoColor=000&logoColor=white)](https://ryanliu112.github.io/compute-optimal-tts)  [![Github](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=github&logoColor=000&logoColor=white)](https://github.com/RyanLiu112/compute-optimal-tts)  [![HuggingFace](https://img.shields.io/badge/HugggingFace-fcd022?style=for-the-badge&logo=huggingface&logoColor=000)](https://huggingface.co/papers/2502.06703)
 
 
 
 
 
-# Website License
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+## 🔥 News
+
+- [2025/02/11] Our paper is released on [arXiv](https://arxiv.org/abs/2502.06703).
+
+
+
+
+
+## 🚀 Getting Started
+
+We are on a tight budget to clean the code. If you want to try the power of TTS, you can refer to [openr](https://github.com/openreasoner/openr), an open-source LLM reasoning repository that we largely refer to.
+
+
+
+
+
+## 📚 Citation
+
+```
+@article{liu2025can,
+    title   = {Can 1B LLM Surpass 405B LLM? Rethinking Compute-Optimal Test-Time Scaling},
+    author  = {Runze Liu and Junqi Gao and Jian Zhao and Kaiyan Zhang and Xiu Li and Biqing Qi and Wanli Ouyang and Bowen Zhou},
+    journal = {arXiv preprint arXiv:2502.06703},
+    year    = {2025}
+}
+```
+
+
+
+## 🏅 Acknowledgement
+
+Our code is largely based on [openr](https://github.com/openreasoner/openr), an awesome LLM reasoning repository, and their work has been instrumental in our study. We also want to thank the community for providing high-quality open-source PRMs, including [Qwen2.5-Math](https://huggingface.co/collections/Qwen/qwen25-math-66eaa240a1b7d5ee65f1da3e), [Skywork-o1](https://huggingface.co/collections/Skywork/skywork-o1-open-67453df58e12f6c3934738d0), [RLHFlow](https://huggingface.co/collections/RLHFlow/rlhflow-math-process-reward-model-6725a42fc8808e12aa1cb144), and [Math-Shepherd](https://huggingface.co/peiyi9979/math-shepherd-mistral-7b-prm).
+
