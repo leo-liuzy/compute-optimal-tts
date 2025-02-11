@@ -6,8 +6,6 @@
 
 </div>
 
-<img src="./static/images/MATH_co_abs.png" alt="" style="max-width: 100%; height: auto;" id="MATH_co_abs">
-
 <div align="center">
   <p>
     <a href="#🔔news" style="text-decoration: none; font-weight: bold;">🔔 News</a> •
@@ -21,7 +19,7 @@
   </p>
 </div>
 
-
+<img src="./static/images/MATH_co_abs.png" alt="" style="max-width: 100%; height: auto;" id="MATH_co_abs">
 
 ## 🔔 News
 
