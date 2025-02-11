@@ -46,7 +46,7 @@ We are on a tight budget to clean the code. If you want to try the power of TTS 
 
 
 
-## 📚 Citation
+## **📝** Citation
 
 ```
 @article{liu2025can,
