@@ -22,13 +22,25 @@
 
 
 
+<img src="./static/images/small_vs_large.png" alt="" style="width: 100%; max-width: 1000px; margin-top: 20px; margin-bottom: 10px;" id="small_vs_large">
+
+
+
+<img src="./static/images/small_vs_large_FLOPS.png" alt="" style="width: 100%; max-width: 1000px; margin-top: 20px; margin-bottom: 10px;" id="small_vs_large_FLOPS">
+
+
+
+<img src="./static/images/cot_vs_majority_vs_co.png" alt="" style="width: 100%; max-width: 1000px; margin-top: 20px; margin-bottom: 10px;" id="cot_vs_majority_vs_co">
+
+
+
+<img src="./static/images/long-cot.png" alt="" style="width: 100%; max-width: 1000px; margin-top: 20px; margin-bottom: 10px;" id="long-cot">
+
 
 
 ## 🚀 Getting Started
 
 We are on a tight budget to clean the code. If you want to try the power of TTS quickly, you can refer to [openr](https://github.com/openreasoner/openr), an open-source LLM reasoning repository that we largely refer to.
-
-
 
 
 
