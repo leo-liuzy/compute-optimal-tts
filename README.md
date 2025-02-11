@@ -8,11 +8,24 @@
 
 <img src="./static/images/MATH_co_abs.png" alt="" style="max-width: 100%; height: auto;" id="MATH_co_abs">
 
+<div align="center">
+  <p>
+    <a href="#🔔news" style="text-decoration: none; font-weight: bold;">🔔 News</a> •
+    <a href="#⚙️tts methods" style="text-decoration: none; font-weight: bold;">⚙️ TTS Methods</a> •
+    <a href="#🏆results" style="text-decoration: none; font-weight: bold;">🏆 Results</a>
+  </p>
+  <p>
+    <a href="#🚀getting started" style="text-decoration: none; font-weight: bold;">🚀 Getting Started</a> •
+    <a href="#📝citation" style="text-decoration: none; font-weight: bold;">📝 Citation</a> •
+    <a href="#💡acknowledgement" style="text-decoration: none; font-weight: bold;">💡 Acknowledgement</a>
+  </p>
+</div>
 
 
-## 🔥 News
 
-- [2025/02/11] Our paper is released on [arXiv](https://arxiv.org/abs/2502.06703).
+## 🔔 News
+
+- [2025/02/11] 🔥Our paper is released on [arXiv](https://arxiv.org/abs/2502.06703).
 
 
 
@@ -46,7 +59,7 @@ We are on a tight budget to clean the code. If you want to try the power of TTS 
 
 
 
-## **📝** Citation
+## 📝 Citation
 
 ```
 @article{liu2025can,
