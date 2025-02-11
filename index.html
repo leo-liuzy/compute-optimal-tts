@@ -21,8 +21,7 @@
     gtag('config', 'G-PYVRSFMDRL');
   </script>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
@@ -143,9 +142,9 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body has-text-centered">
-      <img src="./static/images/MATH_co_abs.png" alt="judge pipeline" style="max-width: 100%; height: auto;" id="pipeline_figure">
+      <img src="./static/images/MATH_co_abs.png" alt="" style="max-width: 100%; height: auto;" id="MATH_co_abs">
       <h2 class="subtitle has-text-centered">
-        Figure 1: Comparison between the performance of smaller LLMs compute-optimal TTS and that of larger LLMs CoT on MATH-500 and AIME24.
+        <strong>Figure 1</strong>: Comparison between the performance of smaller LLMs compute-optimal TTS and that of larger LLMs CoT on MATH-500 and AIME24.
       </h2>
     </div>
   </div>
@@ -168,6 +167,62 @@
     <!--/ Abstract. -->
   </div>
 </section>
+
+
+
+<div id="setup" class="container" style="margin-bottom: 2vh;">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Setup</h2>
+      <div class="content has-text-justified">
+        <p>
+          We consider three TTS methods: Best-of-N (BoN), beam search, and Diverse Verifier Tree Search~(DVTS), as shown in Figure 2.
+        </p>
+      </div>
+      <img src="./static/images/tts_method.png" alt="" style="width: 100%; max-width: 1000px; margin-top: 20px; margin-bottom: 10px;" id="tts_method">
+      <h3 class="has-text-centered">
+        <strong>Figure 2</strong>: Comparison of different external TTS methods.
+      </h3>
+      <!-- <div class="content has-text-justified" style="margin-top: 20px;">
+        <p>
+          We use policy models from Llama 3 and Qwen2.5 families with different sizes and all of them are the Instruct version.
+        </p>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
+<div id="results" class="container" style="margin-bottom: 2vh;">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Results</h2>
+      <div class="content has-text-justified">
+        <p>
+        </p>
+      </div>
+      <img src="./static/images/small_vs_large.png" alt="" style="width: 100%; max-width: 1000px; margin-top: 20px; margin-bottom: 10px;" id="small_vs_large">
+
+      <div class="content has-text-justified">
+        <p>
+        </p>
+      </div>
+      <img src="./static/images/small_vs_large_FLOPS.png" alt="" style="width: 100%; max-width: 1000px; margin-top: 20px; margin-bottom: 10px;" id="small_vs_large_FLOPS">
+
+      <div class="content has-text-justified">
+        <p>
+        </p>
+      </div>
+      <img src="./static/images/cot_vs_majority_vs_co.png" alt="" style="width: 100%; max-width: 1000px; margin-top: 20px; margin-bottom: 10px;" id="cot_vs_majority_vs_co">
+
+      <div class="content has-text-justified">
+        <p>
+        </p>
+      </div>
+      <img src="./static/images/long-cot.png" alt="" style="width: 100%; max-width: 1000px; margin-top: 20px; margin-bottom: 10px;" id="long-cot">
+    </div>
+  </div>
+</div>
 
 
 <section class="section" id="BibTeX">
