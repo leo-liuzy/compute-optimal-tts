@@ -1,8 +1,10 @@
+<div align="center">
+
 # Compute-Optimal Test-Time Scaling
 
 [![arXiv](https://img.shields.io/badge/arXiv-2502.06703-ff0000.svg?style=for-the-badge)](https://arxiv.org/abs/2502.06703)  [![Website](https://img.shields.io/badge/Project_Page-000acc?style=for-the-badge&logo=githubpages&logoColor=000&logoColor=white)](https://ryanliu112.github.io/compute-optimal-tts)  [![Github](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=github&logoColor=000&logoColor=white)](https://github.com/RyanLiu112/compute-optimal-tts)  [![HuggingFace](https://img.shields.io/badge/HugggingFace-fcd022?style=for-the-badge&logo=huggingface&logoColor=000)](https://huggingface.co/papers/2502.06703)
 
-
+</div>
 
 
 
