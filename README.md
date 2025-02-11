@@ -6,6 +6,8 @@
 
 </div>
 
+<img src="./static/images/MATH_co_abs.png" alt="" style="max-width: 100%; height: auto;" id="MATH_co_abs">
+
 
 
 ## 🔥 News
@@ -14,11 +16,11 @@
 
 
 
+## ⚙️ TTS Methods
 
+<img src="./static/images/tts_method.png" alt="" style="width: 100%; max-width: 1000px; margin-top: 20px; margin-bottom: 10px;" id="tts_method">
 
 ## 🏆 Results
-
-<img src="./static/images/MATH_co_abs.png" alt="" style="max-width: 100%; height: auto;" id="MATH_co_abs">
 
 
 
