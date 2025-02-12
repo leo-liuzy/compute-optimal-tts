@@ -53,7 +53,7 @@
 
 ## 🚀 Getting Started
 
-We are on a tight budget to clean the code. If you want to try the power of TTS quickly, you can refer to [OpenR](https://github.com/openreasoner/openr), an open-source LLM reasoning repository that we largely refer to.
+We are on a tight budget to clean the code and plan to release the code in **two** days. If you want to try the power of TTS quickly, you can refer to [OpenR](https://github.com/openreasoner/openr), an open-source LLM reasoning repository that we largely refer to.
 
 
 
