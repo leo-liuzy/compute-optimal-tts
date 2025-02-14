@@ -55,12 +55,18 @@
 
 ## 🚀 Getting Started
 
+Clone the repository:
+
+```bash
+git clone https://github.com/RyanLiu112/compute-optimal-tts.git
+cd compute-optimal-tts/src
+```
+
 Create a new conda environment and install the dependencies:
 
 ```bash
 conda create -n tts python=3.10
 conda activate tts
-cd src
 pip install -r requirements.txt
 pip install flash-attn --no-build-isolation
 pip install "ray[default]==2.38.0"
