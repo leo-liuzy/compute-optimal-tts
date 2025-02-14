@@ -23,6 +23,8 @@
 
 ## 🔔 News
 
+- [2025/02/14] 💻 Our code is released.
+- [2025/02/12] ⭐️ Our paper ranked #1 on [HuggingFace Daily Papers](https://huggingface.co/papers?date=2025-02-11).
 - [2025/02/11] 🔥 Our paper is released on [arXiv](https://arxiv.org/abs/2502.06703).
 
 
@@ -53,7 +55,46 @@
 
 ## 🚀 Getting Started
 
-We are on a tight budget to clean the code and plan to release the code in **two** days. If you want to try the power of TTS quickly, you can refer to [OpenR](https://github.com/openreasoner/openr), an open-source LLM reasoning repository that we largely refer to.
+Create a new conda environment and install the dependencies:
+
+```bash
+conda create -n tts python=3.10
+conda activate tts
+cd src
+pip install -r requirements.txt
+pip install flash-attn --no-build-isolation
+pip install "ray[default]==2.38.0"
+pip install "fschat[model_worker,webui]"
+pip install sympy==1.12
+```
+
+### Best-of-N
+
+Step 1: Generate responses.
+```bash
+cd src
+bash scripts/run.sh --method best_of_n --LM path/to/LM --RM dummy --width 1 --num_seq 1 --num_q 256
+```
+
+Step 2: Evaluate responses.
+```bash
+cd src
+bash scripts/run.sh --method best_of_n --LM path/to/LM --RM path/to/RM --width 1 --num_seq 1 --num_q 256
+```
+
+### Beam Search
+
+```bash
+cd src
+bash scripts/run.sh --method beam_search --LM path/to/LM --RM path/to/RM --width 4 --num_seq 1 --num_q 1
+```
+
+### DVTS
+
+```bash
+cd src
+bash scripts/run.sh --method beam_search --LM path/to/LM --RM path/to/RM --width 4 --num_seq 1 --num_q 64
+```
 
 
 
