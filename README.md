@@ -66,6 +66,8 @@ pip install flash-attn --no-build-isolation
 pip install "ray[default]==2.38.0"
 pip install "fschat[model_worker,webui]"
 pip install sympy==1.12
+cd envs/MATH/latex2sympy
+pip install -e .
 ```
 
 ### Best-of-N
