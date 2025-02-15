@@ -9,7 +9,7 @@
 <div align="center">
   <p>
     <a href="#🔔news" style="text-decoration: none; font-weight: bold;">🔔 News</a> •
-    <a href="#⚙️tts methods" style="text-decoration: none; font-weight: bold;">⚙️ TTS Methods</a> •
+    <a href="#👀tts methods" style="text-decoration: none; font-weight: bold;">👀 TTS Methods</a> •
     <a href="#🏆results" style="text-decoration: none; font-weight: bold;">🏆 Results</a>
   </p>
   <p>
@@ -75,7 +75,34 @@ cd envs/MATH/latex2sympy
 pip install -e .
 ```
 
-### Best-of-N
+### Supported Models
+
+#### Policy Models
+
+Llama series (Instruct):
+
+- [Llama 3.1](https://huggingface.co/collections/meta-llama/llama-31-669fc079a0c406a149a5738f): [8B](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct)
+- [Llama 3.2](https://huggingface.co/collections/meta-llama/llama-32-66f448ffc8c32f949b04c8cf): [1B](https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct), [3B](https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct)
+
+Qwen series (Instruct):
+
+- [Qwen2.5](https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9e): [0.5B](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct), [1.5B](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct), [3B](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct), [7B](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct), [14B](https://huggingface.co/Qwen/Qwen2.5-14B-Instruct), [32B](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct), [72B](https://huggingface.co/Qwen/Qwen2.5-72B-Instruct)
+
+DeepSeek-R1-Distill series:
+
+- [DeepSeek-R1-Distill-Qwen-1.5B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B)
+- [DeepSeek-R1-Distill-Qwen-7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B)
+
+#### Process Reward Models
+
+- [Math-Shepherd](https://huggingface.co/peiyi9979/math-shepherd-mistral-7b-prm): [Math-Shepherd-PRM-7B](https://huggingface.co/peiyi9979/math-shepherd-mistral-7b-prm)
+- [RLHFlow](https://huggingface.co/collections/RLHFlow/rlhflow-math-process-reward-model-6725a42fc8808e12aa1cb144): [RLHFlow-PRM-Mistral-8B](https://huggingface.co/RLHFlow/Llama3.1-8B-PRM-Mistral-Data), [RLHFlow-PRM-Deepseek-8B](https://huggingface.co/RLHFlow/Llama3.1-8B-PRM-Deepseek-Data)
+- [Skywork](https://huggingface.co/collections/Skywork/skywork-o1-open-67453df58e12f6c3934738d0): [Skywork-PRM-1.5B](https://huggingface.co/Skywork/Skywork-o1-Open-PRM-Qwen-2.5-1.5B), [Skywork-PRM-7B](https://huggingface.co/Skywork/Skywork-o1-Open-PRM-Qwen-2.5-7B)
+- [Qwen2.5-Math](https://huggingface.co/collections/Qwen/qwen25-math-66eaa240a1b7d5ee65f1da3e): [Qwen2.5-Math-PRM-7B](https://huggingface.co/Qwen/Qwen2.5-Math-PRM-7B), [Qwen2.5-Math-PRM-72B](https://huggingface.co/Qwen/Qwen2.5-Math-PRM-72B)
+
+### How to run
+
+#### Best-of-N
 
 Step 1: Generate responses.
 ```bash
@@ -89,14 +116,14 @@ cd src
 bash scripts/run.sh --method best_of_n --LM path/to/LM --RM path/to/RM --width 1 --num_seq 1 --num_q 256
 ```
 
-### Beam Search
+#### Beam Search
 
 ```bash
 cd src
 bash scripts/run.sh --method beam_search --LM path/to/LM --RM path/to/RM --width 4 --num_seq 1 --num_q 1
 ```
 
-### DVTS
+#### DVTS
 
 ```bash
 cd src
