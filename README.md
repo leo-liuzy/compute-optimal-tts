@@ -78,6 +78,12 @@ pip install -e .
 > [!NOTE]
 > Our mathematical expression evaluation code is based on [Qwen2.5-Math](https://github.com/QwenLM/Qwen2.5-Math). For a more powerful evaluator, please refer to this repository: [Math-Verify](https://github.com/huggingface/Math-Verify).
 
+### Supported Tasks
+
+- [MATH-500](https://github.com/openai/prm800k)
+- [AIME24](https://huggingface.co/datasets/AI-MO/aimo-validation-aime)
+- [AMC23](https://huggingface.co/datasets/AI-MO/aimo-validation-amc)
+
 ### Supported Models
 
 #### Policy Models
