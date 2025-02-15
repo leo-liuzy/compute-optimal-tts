@@ -115,6 +115,13 @@ DeepSeek-R1-Distill series:
 
 ### How to run
 
+#### CoT
+
+```bash
+cd src
+bash scripts/run.sh --method cot --LM path/to/LM --RM path/to/RM --width 1 --num_seq 1
+```
+
 #### Best-of-N
 
 Step 1: Generate responses.
@@ -133,7 +140,7 @@ bash scripts/run.sh --method best_of_n --LM path/to/LM --RM path/to/RM --width 1
 
 ```bash
 cd src
-bash scripts/run.sh --method beam_search --LM path/to/LM --RM path/to/RM --width 4 --num_seq 1 --num_q 1
+bash scripts/run.sh --method beam_search --LM path/to/LM --RM path/to/RM --width 4 --num_seq 1
 ```
 
 #### DVTS
