@@ -103,7 +103,7 @@ DeepSeek-R1-Distill series:
 - [Skywork](https://huggingface.co/collections/Skywork/skywork-o1-open-67453df58e12f6c3934738d0): [Skywork-PRM-1.5B](https://huggingface.co/Skywork/Skywork-o1-Open-PRM-Qwen-2.5-1.5B), [Skywork-PRM-7B](https://huggingface.co/Skywork/Skywork-o1-Open-PRM-Qwen-2.5-7B)
 - [Qwen2.5-Math](https://huggingface.co/collections/Qwen/qwen25-math-66eaa240a1b7d5ee65f1da3e): [Qwen2.5-Math-PRM-7B](https://huggingface.co/Qwen/Qwen2.5-Math-PRM-7B), [Qwen2.5-Math-PRM-72B](https://huggingface.co/Qwen/Qwen2.5-Math-PRM-72B)
 
-### GPU configurations
+### GPU configurations (recommended)
 
 | Policy Model | PRM     | GPU          |
 |--------------|---------|--------------|
@@ -119,7 +119,7 @@ DeepSeek-R1-Distill series:
 
 ```bash
 cd src
-bash scripts/run.sh --method cot --LM path/to/LM --RM path/to/RM --width 1 --num_seq 1
+bash scripts/run.sh --method cot --LM path/to/LM --RM dummy --width 1 --num_seq 1
 ```
 
 #### Best-of-N
