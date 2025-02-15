@@ -147,6 +147,8 @@ bash scripts/run.sh --method beam_search --LM path/to/LM --RM path/to/RM --width
 
 ## 📝 Citation
 
+If you find this work helpful, please kindly cite our paper:
+
 ```bibtex
 @article{liu2025can,
     title   = {Can 1B LLM Surpass 405B LLM? Rethinking Compute-Optimal Test-Time Scaling},
