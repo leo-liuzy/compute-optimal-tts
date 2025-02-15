@@ -23,13 +23,12 @@
 
 ## 🔔 News
 
-- [2025/02/14] 💻 Our code is released.
-- [2025/02/12] ⭐️ Our paper ranked #1 on [HuggingFace Daily Papers](https://huggingface.co/papers?date=2025-02-11).
-- [2025/02/11] 🔥 Our paper is released on [arXiv](https://arxiv.org/abs/2502.06703).
+- **[2025-02-14]** ✨ Code is now available.
+- **[2025-02-12]** 📢 Our work is reported by both [QbitAI (量子位)](https://mp.weixin.qq.com/s/BUBp2TShir9MRd6iVtFSfw) and [AI Era (新智元)](https://mp.weixin.qq.com/s/ygv_CIcVJcRsgr98fdKc_g).
+- **[2025-02-12]** 🏅 Our paper ranked *#1* on [HuggingFace Daily Papers](https://huggingface.co/papers?date=2025-02-11).
+- **[2025-02-11]** 📄 Our paper is released on [arXiv](https://arxiv.org/abs/2502.06703).
 
-
-
-## ⚙️ TTS Methods
+## 👀 TTS Methods
 
 <img src="./static/images/tts_method.png" alt="" style="width: 100%; max-width: 1000px; margin-top: 20px; margin-bottom: 10px;" id="tts_method">
 
@@ -108,7 +107,7 @@ bash scripts/run.sh --method beam_search --LM path/to/LM --RM path/to/RM --width
 
 ## 📝 Citation
 
-```
+```bibtex
 @article{liu2025can,
     title   = {Can 1B LLM Surpass 405B LLM? Rethinking Compute-Optimal Test-Time Scaling},
     author  = {Runze Liu and Junqi Gao and Jian Zhao and Kaiyan Zhang and Xiu Li and Biqing Qi and Wanli Ouyang and Bowen Zhou},
