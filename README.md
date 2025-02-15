@@ -75,6 +75,9 @@ cd envs/MATH/latex2sympy
 pip install -e .
 ```
 
+> [!NOTE]
+> Our mathematical expression evaluation code is based on [Qwen2.5-Math](https://github.com/QwenLM/Qwen2.5-Math). For a more powerful evaluator, please refer to this repository: [Math-Verify](https://github.com/huggingface/Math-Verify).
+
 ### Supported Models
 
 #### Policy Models
@@ -99,6 +102,16 @@ DeepSeek-R1-Distill series:
 - [RLHFlow](https://huggingface.co/collections/RLHFlow/rlhflow-math-process-reward-model-6725a42fc8808e12aa1cb144): [RLHFlow-PRM-Mistral-8B](https://huggingface.co/RLHFlow/Llama3.1-8B-PRM-Mistral-Data), [RLHFlow-PRM-Deepseek-8B](https://huggingface.co/RLHFlow/Llama3.1-8B-PRM-Deepseek-Data)
 - [Skywork](https://huggingface.co/collections/Skywork/skywork-o1-open-67453df58e12f6c3934738d0): [Skywork-PRM-1.5B](https://huggingface.co/Skywork/Skywork-o1-Open-PRM-Qwen-2.5-1.5B), [Skywork-PRM-7B](https://huggingface.co/Skywork/Skywork-o1-Open-PRM-Qwen-2.5-7B)
 - [Qwen2.5-Math](https://huggingface.co/collections/Qwen/qwen25-math-66eaa240a1b7d5ee65f1da3e): [Qwen2.5-Math-PRM-7B](https://huggingface.co/Qwen/Qwen2.5-Math-PRM-7B), [Qwen2.5-Math-PRM-72B](https://huggingface.co/Qwen/Qwen2.5-Math-PRM-72B)
+
+### GPU configurations
+
+| Policy Model | PRM     | GPU          |
+|--------------|---------|--------------|
+| 0.5B-14B     | 1.5B-8B | 1x A100 80GB |
+| 32B          | 1.5B-8B | 2x A100 80GB |
+| 72B          | 1.5B-8B | 3x A100 80GB |
+| 0.5B-32B     | 72B     | 3x A100 80GB |
+| 72B          | 72B     | 4x A100 80GB |
 
 ### How to run
 
