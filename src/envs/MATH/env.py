@@ -24,7 +24,7 @@ def extract_groundtruth(groundtruth_str: str) -> str:
     return parse_ground_truth(groundtruth_str, data_name='math')
 
 
-def judge_correct(problem_str: str, extracted_groundtruth: Optional[str], answer: str, use_canonical_form=False) -> bool:
+def judge_correct(problem_str: str, extracted_groundtruth: Optional[str], answer: str) -> bool:
     result = math_equal(answer, extracted_groundtruth)
     return result
 

@@ -135,13 +135,13 @@ def check_lock_timeout(raw_test_ds, question_parallel_num, save_dir, lock_dir, m
 
     for i in range(len(raw_test_ds)):
         for j in range(question_parallel_num):
+            file_path = os.path.join(save_dir, f"question_{i}/record_{j}.jsonl")
             lock_file_path = os.path.join(save_dir, f"{lock_dir}/question_{i}_{j}.lock")
             if is_file_exists(lock_file_path):
                 exist_time = get_file_exist_time(lock_file_path)
-                if exist_time > max_exist_time:
+                if exist_time > max_exist_time or is_file_exists(file_path):
                     try:
                         os.remove(lock_file_path)
-                        print(f"Remove lock file {lock_file_path}, exist time: {exist_time:.1f} minutes")
                     except Exception as e:
                         print(f"Remove lock file error: {str(e)}")
 

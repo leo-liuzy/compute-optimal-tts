@@ -27,7 +27,7 @@ from reason.inference.rm_call import (
     RemoteRewardModelConfig,
     get_prm_special_tokens,
 )
-from utils import check_process_cnt, assign_tasks, get_model_name, setup_seed
+from utils import check_process_cnt, assign_tasks, get_model_name, setup_seed, check_lock_timeout
 
 cot_prompt_dict = {
     'llama_official': """Solve the following math problem efficiently and clearly:\n\n- For simple problems (2 steps or fewer):\nProvide a concise solution with minimal explanation.\n\n- For complex problems (3 steps or more):\nUse this step-by-step format:\n\n## Step 1: [Concise description]\n[Brief explanation and calculations]\n\n## Step 2: [Concise description]\n[Brief explanation and calculations]\n\n...\n\nRegardless of the approach, always conclude with:\n\nTherefore, the final answer is: $\\boxed{answer}$. I hope it is correct.\n\nWhere [answer] is just the final number or expression that solves the problem.""",
@@ -350,3 +350,4 @@ if __name__ == "__main__":
     returned_temp = parallel_evaluate_test_dataset(
         actor_pool, test_ds, args.method, solver_fn, save_dir, question_parallel_num=args.question_parallel_num,
     )
+    check_lock_timeout(test_ds, args.question_parallel_num, save_dir, args.lock_dir, args.max_time)
