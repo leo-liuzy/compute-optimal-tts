@@ -8,14 +8,14 @@
 
 <div align="center">
   <p>
-    <a href="#🔔news" style="text-decoration: none; font-weight: bold;">🔔 News</a> •
-    <a href="#👀tts methods" style="text-decoration: none; font-weight: bold;">👀 TTS Methods</a> •
-    <a href="#🏆results" style="text-decoration: none; font-weight: bold;">🏆 Results</a>
+    <a href="#-news" style="text-decoration: none; font-weight: bold;">🔔 News</a> •
+    <a href="#-tts-methods" style="text-decoration: none; font-weight: bold;">👀 TTS Methods</a> •
+    <a href="#-results" style="text-decoration: none; font-weight: bold;">🏆 Results</a>
   </p>
   <p>
-    <a href="#🚀getting started" style="text-decoration: none; font-weight: bold;">🚀 Getting Started</a> •
-    <a href="#📝citation" style="text-decoration: none; font-weight: bold;">📝 Citation</a> •
-    <a href="#💡acknowledgement" style="text-decoration: none; font-weight: bold;">💡 Acknowledgement</a>
+    <a href="#-getting-started" style="text-decoration: none; font-weight: bold;">🚀 Getting Started</a> •
+    <a href="#-citation" style="text-decoration: none; font-weight: bold;">📝 Citation</a> •
+    <a href="#-acknowledgement" style="text-decoration: none; font-weight: bold;">💡 Acknowledgement</a>
   </p>
 </div>
 
