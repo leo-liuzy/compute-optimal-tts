@@ -182,15 +182,14 @@ def heart_beat_worker(chosen_idxs, save_dir, lock_dir):
         time.sleep(60)
 
 
-def preprocess_data(problem_inst, file_path, bon_post):
+def preprocess_data(problem_inst, file_path):
     data = copy.deepcopy(problem_inst)
-    # if bon_post == 1:
     data['file_path'] = file_path
     return data
 
 
 def assign_tasks(
-    raw_test_ds, question_parallel_num, num_sequence, save_dir, lock_dir, batch_size=0, max_exist_time=0, bon_post=0
+    raw_test_ds, question_parallel_num, num_sequence, save_dir, lock_dir, batch_size=0, max_exist_time=0
 ):
     """Assign problems for current run."""
 
@@ -229,7 +228,7 @@ def assign_tasks(
                                 chosen_dict[i] = [j]
                             else:
                                 chosen_dict[i].append(j)
-                            test_ds.append(preprocess_data(raw_test_ds[i], file_path, bon_post))
+                            test_ds.append(preprocess_data(raw_test_ds[i], file_path))
                             create_empty_file(lock_file_path)
                         except Exception as e:
                             print(f"Remove lock file error: {str(e)}")
@@ -242,7 +241,7 @@ def assign_tasks(
                         chosen_dict[i] = [j]
                     else:
                         chosen_dict[i].append(j)
-                    test_ds.append(preprocess_data(raw_test_ds[i], file_path, bon_post))
+                    test_ds.append(preprocess_data(raw_test_ds[i], file_path))
                     create_empty_file(lock_file_path)
             if len(chosen_idxs) >= batch_size:
                 break

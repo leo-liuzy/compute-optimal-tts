@@ -129,39 +129,63 @@ DeepSeek-R1-Distill series:
 
 ### How to run
 
-#### CoT
+#### Step 1: Serve policy models and PRMs
+
+Set the environment variables:
 
 ```bash
 cd src
-bash scripts/run.sh --method cot --LM path/to/LM --RM dummy --width 1 --num_seq 1
+export POLICY_MODEL_PATH=path/to/LM
+export VALUE_MODEL_PATH=path/to/RM  # dummy for CoT and Best-of-N (Step 1)
+export HOST_ADDR=0.0.0.0
+export CONTROLLER_PORT=10014
+export WORKER_BASE_PORT=10081
+export LOGDIR=path/to/logdir
 ```
 
-#### Best-of-N
+Run the corresponding script:
 
-Step 1: Generate responses.
 ```bash
-cd src
-bash scripts/run.sh --method best_of_n --LM path/to/LM --RM dummy --width 1 --num_seq 1 --num_q 256
+# 1 gpu
+bash scripts/serve_gpu1.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT
+# 2 gpus (32B policy model + 1.5B-8B PRM)
+bash scripts/serve_gpu2.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT
+# 3 gpus (72B policy model + 1.5B-8B PRM)
+bash scripts/serve_gpu3_1-2.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT
+# 3 gpus (0.5B-32B policy model + 72B PRM)
+bash scripts/serve_gpu3_2-1.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT
+# 4 gpus (72B policy model + 72B PRM)
+bash scripts/serve_gpu4.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT
 ```
 
-Step 2: Evaluate responses.
+#### Step 2: Run TTS methods
+
+##### CoT
+
 ```bash
 cd src
-bash scripts/run.sh --method best_of_n --LM path/to/LM --RM path/to/RM --width 1 --num_seq 1 --num_q 256
+bash scripts/run.sh --method cot --LM $POLICY_MODEL_PATH --RM dummy --width 1 --num_seq 1
 ```
 
-#### Beam Search
+##### Best-of-N
 
 ```bash
 cd src
-bash scripts/run.sh --method beam_search --LM path/to/LM --RM path/to/RM --width 4 --num_seq 1
+bash scripts/run.sh --method best_of_n --LM $POLICY_MODEL_PATH --RM $VALUE_MODEL_PATH --width 1 --num_seq 1 --num_q 256
 ```
 
-#### DVTS
+##### Beam Search
 
 ```bash
 cd src
-bash scripts/run.sh --method beam_search --LM path/to/LM --RM path/to/RM --width 4 --num_seq 1 --num_q 64
+bash scripts/run.sh --method beam_search --LM $POLICY_MODEL_PATH --RM $VALUE_MODEL_PATH --width 4 --num_seq 1
+```
+
+##### DVTS
+
+```bash
+cd src
+bash scripts/run.sh --method beam_search --LM $POLICY_MODEL_PATH --RM $VALUE_MODEL_PATH --width 4 --num_seq 1 --num_q 64
 ```
 
 

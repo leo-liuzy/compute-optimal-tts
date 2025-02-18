@@ -29,7 +29,6 @@ from reason.inference.rm_call import (
 )
 from utils import check_process_cnt, assign_tasks, get_model_name, setup_seed
 
-
 cot_prompt_dict = {
     'llama_official': """Solve the following math problem efficiently and clearly:\n\n- For simple problems (2 steps or fewer):\nProvide a concise solution with minimal explanation.\n\n- For complex problems (3 steps or more):\nUse this step-by-step format:\n\n## Step 1: [Concise description]\n[Brief explanation and calculations]\n\n## Step 2: [Concise description]\n[Brief explanation and calculations]\n\n...\n\nRegardless of the approach, always conclude with:\n\nTherefore, the final answer is: $\\boxed{answer}$. I hope it is correct.\n\nWhere [answer] is just the final number or expression that solves the problem.""",
     'qwen': """Please reason step by step, and put your final answer within \\boxed{}.""",
@@ -54,7 +53,6 @@ stop_str_dict = {
     'default': ["\\boxed"],
 }
 
-
 if __name__ == "__main__":
     parser = ArgumentParser()
     # LLM config
@@ -70,7 +68,6 @@ if __name__ == "__main__":
     parser.add_argument("--stop_str", default=[])
     parser.add_argument("--sep", default=[])
     parser.add_argument("--double_line_break", type=int, default=0)
-    parser.add_argument("--bon_post", type=int, default=0)
     # RM config
     parser.add_argument("--RM", type=str, default="dummy")
     parser.add_argument("--rm_device", type=str, default="cuda")
@@ -173,18 +170,24 @@ if __name__ == "__main__":
     for lm in args.LM:
         llm_step_tags.append(args.llm_step_tag)
         model_path = lm
-        llm_gen_fns.append(VLLMRemoteCaller(lm, model_path, args.controller_addr, args.llm_step_tag, apply_chat_template=True, multi_gpu=args.multi_gpu, serve_type=args.serve_type, double_line_break=args.double_line_break))
+        llm_gen_fns.append(
+            VLLMRemoteCaller(
+                lm, model_path, args.controller_addr, args.llm_step_tag, apply_chat_template=True, multi_gpu=args.multi_gpu,
+                serve_type=args.serve_type, double_line_break=args.double_line_break
+            )
+        )
 
     rm_call = partial(rm_call, model_names=args.LM)
 
     task = Task(task_name=args.task_name, is_few_shot=args.is_few_shot, model_names=args.LM)
+
 
     def parallel_evaluate_test_dataset(actor_pool, raw_test_ds, method_name, solver_fn, save_dir, question_parallel_num):
         results = []
         question2id = {problem_inst["question"]: i for i, problem_inst in enumerate(raw_test_ds)}
 
         test_ds, _ = assign_tasks(
-            raw_test_ds, question_parallel_num, args.num_sequence, save_dir, args.lock_dir, args.batch_size, args.max_time, args.bon_post
+            raw_test_ds, question_parallel_num, args.num_sequence, save_dir, args.lock_dir, args.batch_size, args.max_time
         )
 
         res_q = actor_pool.map_unordered(lambda p, x: p.evaluate_problem.remote(x, solver_fn), test_ds)
@@ -234,6 +237,7 @@ if __name__ == "__main__":
 
         return results
 
+
     if 'deepseek-r1' in args.LM[0].lower():
         args.temperature = 0.6
         args.top_p = 0.95
@@ -274,8 +278,6 @@ if __name__ == "__main__":
             )
         elif args.method == "best_of_n":
             args.num_sequence = args.tree_max_width
-            if 'dummy' not in args.RM and args.double_line_break:
-                args.bon_post = 1
         method_config = BeamSearchConfig(
             task_name=args.task_name,
             tree_max_depth=1,
@@ -339,11 +341,9 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"Error: {e}")
 
-    if args.method in ["cot", "best_of_n"]:
-        direct_io = 2 if args.method == "cot" else 1
-    else:
-        direct_io = 0
-    actor_pool = ActorPool([RemoteMathEvaluator.remote(args.task_name, llm_gen_fns, rm_call, direct_io=direct_io, bon_post=args.bon_post) for _ in range(args.num_worker)])
+    actor_pool = ActorPool(
+        [RemoteMathEvaluator.remote(args.task_name, llm_gen_fns, rm_call, direct_io=direct_io) for _ in range(args.num_worker)]
+    )
 
     test_ds = task.test_ds(args.task_name)
 

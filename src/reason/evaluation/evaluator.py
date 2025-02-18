@@ -97,10 +97,6 @@ def judge_ans(
 @dataclass
 class SolutionOutput:
     solutions: List[str]
-    # Define the completion tokens for each solution
-    #  For best_of_n, it's a list of int, indicate how many tokens in each generation
-    #  For beam search, it's a list of zeros, except the last element indicates total tokens
-    #  For mcts, it's a list of int, indicate how many tokens consumed between two paths
     completion_tokens: List[int]
 
 
@@ -116,7 +112,7 @@ class TreeSearchSolutionOutput(SolutionOutput):
 class MathEvaluator:
 
     def __init__(
-        self, task: Union[str, Task], lm_calls: List[LanguageModelCallingFunction], rm_call: RewardModelCallingFunction, direct_io=False, bon_post=False
+        self, task: Union[str, Task], lm_calls: List[LanguageModelCallingFunction], rm_call: RewardModelCallingFunction, direct_io=False
     ):
         if isinstance(task, str):
             self._task = Task(task_name=task)
@@ -126,44 +122,9 @@ class MathEvaluator:
         self.lm_calls = lm_calls
         self.rm_call = rm_call
         self.direct_io = direct_io
-        self.bon_post = bon_post
 
     def evaluate_problem(self, problem_inst: Dict[str, str], solver_fn: Callable) -> List[str]:
-        if self.bon_post:
-            bon_file_path = problem_inst['file_path']
-            parts = bon_file_path.split('/')
-            index = parts.index('1_1_1')
-            dummy_file_path = os.path.join('/'.join(parts[:index - 1]), 'dummy', '/'.join(parts[index:]))
-            if not os.path.exists(dummy_file_path):
-                print(f"Dummy File not exists: {dummy_file_path}")
-                return {}, {}, []
-            try:
-                with jsonlines.open(dummy_file_path, "r") as reader:
-                    for obj in reader:
-                        data = obj
-                text_list = []
-                for t in data["output"]:
-                    text = ""
-                    step_list = t["text"].split('\n\n')
-                    for step in step_list:
-                        temp_step = step.strip()
-                        if temp_step:
-                            text += step + " ки\n"
-                    text_list.append(text)
-                solution = TreeSearchSolutionOutput(
-                    solutions=text_list,
-                    completion_tokens=[t["completion_tokens"] for t in data["output"]],
-                    tree_completion_tokens=[t["tree_completion_tokens"] for t in data["output"]],
-                    reward_history=[t["reward_history"] for t in data["output"]],
-                    token_history=[t["token_history"] for t in data["output"]],
-                    prob_history=[t["prob_history"] for t in data["output"]],
-                    model_history=[t["model_history"] for t in data["output"]],
-                )
-            except Exception as e:
-                print(f"Load jsonl file error: {str(e)}")
-                return {}, {}, []
-        else:
-            solution: SolutionOutput = solver_fn(problem_inst, self.lm_calls, self.rm_call)
+        solution: SolutionOutput = solver_fn(problem_inst, self.lm_calls, self.rm_call)
         reward_history = solution.reward_history
         token_history = solution.token_history
         prob_history = solution.prob_history
@@ -182,42 +143,37 @@ class MathEvaluator:
         result["total_completion_tokens"] = total_completion_token
         return problem_inst, result, output
 
-    def analyze_output(self, problem_inst: Dict[str, str], gen_answers: List[str], reward_history, token_history, prob_history, model_history=None):
+    def analyze_output(
+        self, problem_inst: Dict[str, str], gen_answers: List[str], reward_history, token_history, prob_history, model_history=None
+    ):
         if 'extracted_groundtruth' in problem_inst:
             extracted_groundtruth = problem_inst['extracted_groundtruth']
         else:
             extracted_groundtruth = self._task.extract_groundtruth(problem_inst["answer"])
 
-        if self.bon_post:
+        if self.direct_io == 1:  # BoN
             input_list = [(problem_inst["question"], txt) for txt in gen_answers]
             for i in range(2):
                 try:
-                    value_list = self.rm_call(input_list)  # TODO: support different LLMs
+                    value_list = self.rm_call(input_list)
                     break
                 except Exception as e:
                     import traceback
                     print(f"Error in computing reward: {e}")
                     traceback.print_exc()
                     value_list = [[0.0]] * len(gen_answers)
-            for input, v in zip(input_list, value_list):
-                txt = input[1]
-                num_step = txt.count("ки\n")
-                if num_step != len(v):
-                    print('-' * 8, 'analyze_output start', '-' * 8)
-                    print('-' * 8, num_step, len(v), '-' * 8)
-                    print('-' * 8, txt, '-' * 8)
-                    print('-' * 8, v, '-' * 8)
-                    print('-' * 8, 'analyze_output end', '-' * 8)
             reward_history = value_list
-        elif self.direct_io:
-            value_list = reward_history
         else:
             value_list = reward_history
 
         extracted_answers = [self._task.extract_answer(txt) for txt in gen_answers]
         output_list = [
-            {"path_idx": i, "text": txt, "value": v, "extracted_answer": extracted_answer, "reward_history": reward, "token_history": token, "prob_history": prob, "model_history": model}
-            for i, (txt, v, extracted_answer, reward, token, prob, model) in enumerate(zip(gen_answers, value_list, extracted_answers, reward_history, token_history, prob_history, model_history))
+            {
+                "path_idx": i, "text": txt, "value": v, "extracted_answer": extracted_answer, "reward_history": reward,
+                "token_history": token, "prob_history": prob, "model_history": model
+            }
+            for i, (txt, v, extracted_answer, reward, token, prob, model) in
+            enumerate(zip(gen_answers, value_list, extracted_answers, reward_history, token_history, prob_history, model_history))
         ]
         res = {
             agg_method:
@@ -236,6 +192,6 @@ class MathEvaluator:
 @ray.remote
 class RemoteMathEvaluator(MathEvaluator):
     def __init__(
-        self, task: str, lm_calls: List[LanguageModelCallingFunction], rm_call: RewardModelCallingFunction, direct_io=False, bon_post=False
+        self, task: str, lm_calls: List[LanguageModelCallingFunction], rm_call: RewardModelCallingFunction, direct_io=False
     ):
-        super().__init__(task, lm_calls, rm_call, direct_io, bon_post)
+        super().__init__(task, lm_calls, rm_call, direct_io)

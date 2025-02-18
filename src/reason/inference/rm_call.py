@@ -3,15 +3,11 @@ This file is largely borrowed from OpenR (https://github.com/openreasoner/openr)
 """
 
 import copy
-import os
-import time
 import traceback
 from dataclasses import dataclass
 from typing import List, Optional, Tuple, Union
 
 import requests
-import torch
-from transformers import AutoTokenizer
 
 from reason.inference.infer_fns import (
     _math_shepherd_infer_fn,
@@ -44,7 +40,7 @@ def get_prm_special_tokens(model_name, tokenizer):
         good_tag_id = tokenizer.encode(good_tag)[-1]
         bad_tag_id = tokenizer.encode(bad_tag)[-1]
         returned_token_ids = [good_tag_id, bad_tag_id]
-    elif 'deepseek-data' in model_name.lower():   # models--RLHFlow--Llama3.1-8B-PRM-Deepseek-Data
+    elif 'deepseek-data' in model_name.lower():  # models--RLHFlow--Llama3.1-8B-PRM-Deepseek-Data
         good_tag, bad_tag = "+", "-"
         good_tag_id = tokenizer.encode(good_tag)[-1]
         bad_tag_id = tokenizer.encode(bad_tag)[-1]
@@ -56,7 +52,7 @@ def get_prm_special_tokens(model_name, tokenizer):
         good_tag_id = tokenizer.encode(f" {good_tag}")[-1]
         bad_tag_id = tokenizer.encode(f" {bad_tag}")[-1]
         returned_token_ids = [good_tag_id, bad_tag_id]
-    elif 'pqm' in model_name.lower():   # models--RLHFlow--Llama3.1-8B-PRM-Deepseek-Data
+    elif 'pqm' in model_name.lower():  # models--RLHFlow--Llama3.1-8B-PRM-Deepseek-Data
         prm_step_tag = "[PRM]"
         step_tag_id = tokenizer.encode(prm_step_tag, add_special_tokens=False)[-1]
     else:
@@ -139,13 +135,16 @@ class DummyRewardModelCaller(RewardModelCallingFunction):
                 self.format_str.format(
                     question=question_answer_pairs[0],
                     answer=self.replace_step_tag(question_answer_pairs[1]),
-                ))
+                )
+            )
         else:
             return [
-                fn(self.format_str.format(
-                    question=s[0],
-                    answer=self.replace_step_tag(s[1]),
-                )) for s in question_answer_pairs
+                fn(
+                    self.format_str.format(
+                        question=s[0],
+                        answer=self.replace_step_tag(s[1]),
+                    )
+                ) for s in question_answer_pairs
             ]
 
 
@@ -261,7 +260,7 @@ class RMRemoteCaller(RewardModelCallingFunction):
                     if j == 0:
                         text = f"{temp_qa_pairs[i][0]} {raw_splits[j].strip()}"
                     else:
-                        text = raw_splits[j].strip()  # TODO: Check this !!!
+                        text = raw_splits[j].strip()
                     conversation.append({"content": text, "role": "user"})
                     conversation.append({"content": "<|reserved_special_token_0|>", "role": "assistant"})  # 128002
                 conversations.append(conversation)

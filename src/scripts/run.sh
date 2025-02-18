@@ -123,37 +123,10 @@ echo "CUDA_VISIBLE_DEVICES: $CUDA_VISIBLE_DEVICES, n_gpus: $n_gpus"
 echo "GPU_LIST:"
 echo "${GPU_LIST[@]}"
 
-HOST_ADDR=0.0.0.0
-CONTROLLER_PORT=10014
-WORKER_BASE_PORT=10081
-controller_addr=http://${HOST_ADDR}:10014
-echo "controller_ip: $HOST_ADDR, controller_addr: $controller_addr"
-
 num_worker=12
 save_dir=${PYTHONPATH}/output
 LOGDIR=${PYTHONPATH}/logs_fastchat
 export LOGDIR=$LOGDIR
-
-if [ $n_gpus -eq 0 ]; then
-    echo "Abandon GPU"
-elif [ $n_gpus -eq 1 ]; then
-    bash ${PYTHONPATH}/scripts/serve_gpu1.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT $LOGDIR
-elif [ $n_gpus -eq 2 ]; then
-    bash ${PYTHONPATH}/scripts/serve_gpu2.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT $LOGDIR
-elif [ $n_gpus -eq 3 ]; then
-    if [[ "$VALUE_MODEL_PATH" =~ "72B" ]]; then
-        bash ${PYTHONPATH}/scripts/serve_gpu3_2-1.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT $LOGDIR
-    else
-        bash ${PYTHONPATH}/scripts/serve_gpu3_1-2.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT $LOGDIR
-    fi
-elif [ $n_gpus -eq 4 ]; then
-    bash ${PYTHONPATH}/scripts/serve_gpu4.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT $LOGDIR
-fi
-
-if [ $n_gpus -gt 0 ]; then
-    echo "Wait 50 seconds ..."
-    sleep 50
-fi
 
 echo "Running $method evaluation ..."
 

@@ -22,7 +22,7 @@ WORKER_BASE_PORT=$5
 export PYTHONPATH=$(pwd)
 PYTHON_EXECUTABLE=$(which python)
 
-LOGDIR=$6
+LOGDIR=${PYTHONPATH}/logs_fastchat
 export LOGDIR=$LOGDIR
 session_name=tts
 if tmux has-session -t $session_name 2>/dev/null; then
@@ -92,11 +92,4 @@ do
 
     tmux send-keys "$command" Enter
     echo "Policy worker $i started on GPU ${GPU_LIST[$i]} with port $WORKER_PORT, model: $POLICY_MODEL_PATH"
-    if [[ "$POLICY_MODEL_PATH" =~ "32B" ]]; then
-        echo "Wait 30 more seconds ..."
-        sleep 30
-    else
-        echo "Wait 15 more seconds ..."
-        sleep 15
-    fi
 done
