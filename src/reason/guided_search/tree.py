@@ -607,4 +607,4 @@ class SearchTree:
                 draw_node(child, depth + 1)
 
         print(f"\n---------Expanded Tree---------")
-        draw_node(self.root)
+        draw_node(self.root, 0)
