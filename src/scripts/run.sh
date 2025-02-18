@@ -138,6 +138,16 @@ if [ $n_gpus -eq 0 ]; then
     echo "Abandon GPU"
 elif [ $n_gpus -eq 1 ]; then
     bash ${PYTHONPATH}/scripts/serve_gpu1.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT $LOGDIR
+elif [ $n_gpus -eq 2 ]; then
+    bash ${PYTHONPATH}/scripts/serve_gpu2.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT $LOGDIR
+elif [ $n_gpus -eq 3 ]; then
+    if [[ "$VALUE_MODEL_PATH" =~ "72B" ]]; then
+        bash ${PYTHONPATH}/scripts/serve_gpu3_2-1.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT $LOGDIR
+    else
+        bash ${PYTHONPATH}/scripts/serve_gpu3_1-2.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT $LOGDIR
+    fi
+elif [ $n_gpus -eq 4 ]; then
+    bash ${PYTHONPATH}/scripts/serve_gpu4.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT $LOGDIR
 fi
 
 if [ $n_gpus -gt 0 ]; then

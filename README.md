@@ -75,6 +75,13 @@ cd envs/MATH/latex2sympy
 pip install -e .
 ```
 
+Install `tmux` for serving policy models and PRMs:
+
+```bash
+sudo apt-get update
+sudo apt-get install tmux
+```
+
 > [!NOTE]
 > Our mathematical expression evaluation code is based on [Qwen2.5-Math](https://github.com/QwenLM/Qwen2.5-Math). For a more powerful evaluator, please refer to this repository: [Math-Verify](https://github.com/huggingface/Math-Verify).
 
@@ -96,6 +103,7 @@ Llama series (Instruct):
 Qwen series (Instruct):
 
 - [Qwen2.5](https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9e): [0.5B](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct), [1.5B](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct), [3B](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct), [7B](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct), [14B](https://huggingface.co/Qwen/Qwen2.5-14B-Instruct), [32B](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct), [72B](https://huggingface.co/Qwen/Qwen2.5-72B-Instruct)
+- [Qwen2.5-Math](https://huggingface.co/collections/Qwen/qwen25-math-66eaa240a1b7d5ee65f1da3e): [1.5B](https://huggingface.co/Qwen/Qwen2.5-Math-1.5B-Instruct), [7B](https://huggingface.co/Qwen/Qwen2.5-Math-7B-Instruct), [72B](https://huggingface.co/Qwen/Qwen2.5-Math-72B-Instruct)
 
 DeepSeek-R1-Distill series:
 

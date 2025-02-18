@@ -85,6 +85,9 @@ do
         if [[ $cpu_offload_gb -gt 0 ]]; then
             command="$command --cpu-offload-gb $cpu_offload_gb"
         fi
+        if [[ "$POLICY_MODEL_PATH" =~ "Qwen2.5-Math-1.5B" ]] || [[ "$POLICY_MODEL_PATH" =~ "Qwen2.5-Math-7B" ]]; then
+            command="VLLM_ALLOW_LONG_MAX_MODEL_LEN=1 $command"
+        fi
     fi
 
     tmux send-keys "$command" Enter
