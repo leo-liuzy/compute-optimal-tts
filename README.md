@@ -54,6 +54,8 @@
 
 ## 🚀 Getting Started
 
+### Installation
+
 Clone the repository:
 
 ```bash
