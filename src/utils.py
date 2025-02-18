@@ -249,13 +249,12 @@ def assign_tasks(
         if len(chosen_idxs) >= batch_size:
             break
 
-    print(f"Len: {len(chosen_idxs)}, Chosen idxs: {chosen_idxs}")
+    print(f"Len: {len(test_ds)}, Chosen dict: {chosen_dict}")
     print(f"Assign end at: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))}, Time cost: {time.time() - start_time:.1f} seconds")
 
     refresh_thread = threading.Thread(target=heart_beat_worker, args=(chosen_idxs, save_dir, lock_dir), daemon=True)
     refresh_thread.start()
 
-    print(f"Len: {len(test_ds)}, Chosen dict: {chosen_dict}")
     return test_ds, chosen_dict
 
 
