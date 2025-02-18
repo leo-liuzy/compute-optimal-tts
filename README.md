@@ -136,7 +136,7 @@ Set the environment variables:
 ```bash
 cd src
 export POLICY_MODEL_PATH=path/to/LM
-export VALUE_MODEL_PATH=path/to/RM  # dummy for CoT and Best-of-N (Step 1)
+export VALUE_MODEL_PATH=path/to/RM  # dummy for CoT
 export HOST_ADDR=0.0.0.0
 export CONTROLLER_PORT=10014
 export WORKER_BASE_PORT=10081
@@ -148,12 +148,16 @@ Run the corresponding script:
 ```bash
 # 1 gpu
 bash scripts/serve_gpu1.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT
+
 # 2 gpus (32B policy model + 1.5B-8B PRM)
 bash scripts/serve_gpu2.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT
+
 # 3 gpus (72B policy model + 1.5B-8B PRM)
 bash scripts/serve_gpu3_1-2.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT
+
 # 3 gpus (0.5B-32B policy model + 72B PRM)
 bash scripts/serve_gpu3_2-1.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT
+
 # 4 gpus (72B policy model + 72B PRM)
 bash scripts/serve_gpu4.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONTROLLER_PORT $WORKER_BASE_PORT
 ```
