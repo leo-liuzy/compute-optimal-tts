@@ -363,9 +363,18 @@ class CoTEnv(BaseEnv):
     def answer(self):
         if len(self.action_history) == 0:
             return ""
-        elif self.direct_io:
+        elif self.direct_io == 2:
             assert len(self.action_history) == 1
             return self.action_history[0]
+        elif self.direct_io == 1:
+            assert len(self.action_history) == 1
+            steps = self.action_history[0].split("\n\n")
+            answer = ""
+            for step in steps:
+                if step.strip() == "":
+                    continue
+                answer += step.strip() + f" {self.prm_step_tag}"
+            return answer
         else:
             answer = ""
             for action in self.action_history:
