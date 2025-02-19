@@ -127,6 +127,7 @@ num_worker=12
 save_dir=${PYTHONPATH}/output
 LOGDIR=${PYTHONPATH}/logs_fastchat
 export LOGDIR=$LOGDIR
+controller_addr=http://$HOST_ADDR:$CONTROLLER_PORT
 
 echo "Running $method evaluation ..."
 

@@ -137,12 +137,9 @@ Set the environment variables:
 
 ```bash
 cd src
-export POLICY_MODEL_PATH=path/to/LM
 export VALUE_MODEL_PATH=path/to/RM  # dummy for CoT
-export HOST_ADDR=0.0.0.0
-export CONTROLLER_PORT=10014
-export WORKER_BASE_PORT=10081
-export LOGDIR=path/to/logdir
+export POLICY_MODEL_PATH=path/to/LM && export LOGDIR=path/to/logdir
+export HOST_ADDR=0.0.0.0 && export CONTROLLER_PORT=10014 && export WORKER_BASE_PORT=10081
 ```
 
 Run the corresponding script:
