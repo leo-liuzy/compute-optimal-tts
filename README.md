@@ -199,7 +199,7 @@ bash scripts/run.sh --method beam_search --LM $POLICY_MODEL_PATH --RM $VALUE_MOD
 
 #### Step 3: Post process the results
 
-For BoN and DVTS, no average result is computed by default. To compute the average, aggregate the `majority_vote` values from all jsonl files after processing all problems num_q times.
+For BoN and DVTS, no average result is computed by default. To compute the average, aggregate the `majority_vote` values from all jsonl files after processing all problems `num_q` times.
 
 
 
