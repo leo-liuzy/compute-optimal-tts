@@ -176,7 +176,7 @@ bash scripts/run.sh --method cot --LM $POLICY_MODEL_PATH --RM dummy --width 1 --
 
 > [!NOTE]
 > **Configuring batch size for BoN and DVTS**:
-> For instance, when running BoN on MATH-500, it processes 500 problems with each executing 256 times (determined by num_q). To enhance the compute efficiency, it is recommended to distribute the problems across multiple GPUs by adjusting the batch size (bs). For example, set bs to 500 for 256 GPUs or 16000 for 8 GPUs.
+> For instance, when running BoN on MATH-500, it processes 500 problems with each executing 256 times (determined by `num_q`). To enhance the compute efficiency, it is recommended to distribute the problems across multiple GPUs by adjusting the `batch size` (bs). For example, set bs to 500 for 256 GPUs or 16000 for 8 GPUs.
 
 ```bash
 cd src
@@ -199,7 +199,7 @@ bash scripts/run.sh --method beam_search --LM $POLICY_MODEL_PATH --RM $VALUE_MOD
 
 #### Step 3: Post process the results
 
-For BoN and DVTS, no average result is computed by default. To compute the average, aggregate the "majority_vote" values from all jsonl files after processing all problems num_q times.
+For BoN and DVTS, no average result is computed by default. To compute the average, aggregate the `majority_vote` values from all jsonl files after processing all problems num_q times.
 
 
 
