@@ -46,7 +46,7 @@ do
     if [[ "$VALUE_MODEL_PATH" =~ "dummy" ]]; then
         command="pwd"
     else
-        command="CUDA_VISIBLE_DEVICES=${GPU_LIST[$i]} ${PYTHON_EXECUTABLE} -m reason.llm_service.workers.reward_model_worker --model-path $VALUE_MODEL_PATH --controller-address http://$HOST_ADDR:$CONTROLER_PORT --host $HOST_ADDR --port $WORKER_PORT --worker-address http://$HOST_ADDR:$WORKER_PORT"
+        command="CUDA_VISIBLE_DEVICES=${GPU_LIST[$i]} ${PYTHON_EXECUTABLE} -m reason.llm_service.workers.reward_model_worker --model-path $VALUE_MODEL_PATH --controller-address http://$HOST_ADDR:$CONTROLLER_PORT --host $HOST_ADDR --port $WORKER_PORT --worker-address http://$HOST_ADDR:$WORKER_PORT"
     fi
     tmux send-keys "$command" Enter
     echo "Reward worker $i started on GPU ${GPU_LIST[$i]} with port $WORKER_PORT, model: $VALUE_MODEL_PATH"
@@ -73,7 +73,7 @@ do
     if [[ "$POLICY_MODEL_PATH" =~ "DeepSeek-R1" ]]; then
         max_model_length=32768
     fi
-    command="VLLM_WORKER_MULTIPROC_METHOD=spawn CUDA_VISIBLE_DEVICES=${GPU_LIST[$i-$NUM_RM_WORKER+1]},${GPU_LIST[$i-$NUM_RM_WORKER+2]} ${PYTHON_EXECUTABLE} -m reason.llm_service.workers.vllm_worker --max_model_length ${max_model_length} --num-gpus ${tensor_parallel_size} --gpu_memory_utilization ${gpu_memory_utilization} --enable_chunked_prefill --swap_space 16 --model-path $POLICY_MODEL_PATH --controller-address http://$HOST_ADDR:$CONTROLER_PORT --host $HOST_ADDR --port $WORKER_PORT --worker-address http://$HOST_ADDR:$WORKER_PORT"
+    command="VLLM_WORKER_MULTIPROC_METHOD=spawn CUDA_VISIBLE_DEVICES=${GPU_LIST[$i-$NUM_RM_WORKER+1]},${GPU_LIST[$i-$NUM_RM_WORKER+2]} ${PYTHON_EXECUTABLE} -m reason.llm_service.workers.vllm_worker --max_model_length ${max_model_length} --num-gpus ${tensor_parallel_size} --gpu_memory_utilization ${gpu_memory_utilization} --enable_chunked_prefill --swap_space 16 --model-path $POLICY_MODEL_PATH --controller-address http://$HOST_ADDR:$CONTROLLER_PORT --host $HOST_ADDR --port $WORKER_PORT --worker-address http://$HOST_ADDR:$WORKER_PORT"
     if [[ $max_num_sequences -gt 0 ]]; then
         command="$command --max_num_sequences $max_num_sequences"
     fi

@@ -70,7 +70,7 @@ do
         max_model_length=32768
     fi
 
-    command="CUDA_VISIBLE_DEVICES=${GPU_LIST[$i-$NUM_RM_WORKER+2]} ${PYTHON_EXECUTABLE} -m reason.llm_service.workers.vllm_worker --max_model_length ${max_model_length} --num-gpus ${tensor_parallel_size} --gpu_memory_utilization ${gpu_memory_utilization} --swap_space 16 --model-path $POLICY_MODEL_PATH --controller-address http://$HOST_ADDR:$CONTROLER_PORT --host $HOST_ADDR --port $WORKER_PORT --worker-address http://$HOST_ADDR:$WORKER_PORT"
+    command="CUDA_VISIBLE_DEVICES=${GPU_LIST[$i-$NUM_RM_WORKER+2]} ${PYTHON_EXECUTABLE} -m reason.llm_service.workers.vllm_worker --max_model_length ${max_model_length} --num-gpus ${tensor_parallel_size} --gpu_memory_utilization ${gpu_memory_utilization} --swap_space 16 --model-path $POLICY_MODEL_PATH --controller-address http://$HOST_ADDR:$CONTROLLER_PORT --host $HOST_ADDR --port $WORKER_PORT --worker-address http://$HOST_ADDR:$WORKER_PORT"
     if [[ $max_num_sequences -gt 0 ]]; then
         command="$command --max_num_sequences $max_num_sequences"
     fi
