@@ -100,7 +100,6 @@ do
     if [[ "$POLICY_MODEL_PATH" =~ "Qwen2.5-Math-1.5B" ]] || [[ "$POLICY_MODEL_PATH" =~ "Qwen2.5-Math-7B" ]] || [[ "$POLICY_MODEL_PATH" =~ "Qwen2.5-Math-72B" ]]; then
         command="VLLM_ALLOW_LONG_MAX_MODEL_LEN=1 $command"
     fi
-    fi
 
     tmux send-keys "$command" Enter
     echo "Policy worker $i started on GPU ${GPU_LIST[$i-$NUM_RM_WORKER+1]} with port $WORKER_PORT, model: $POLICY_MODEL_PATH"
