@@ -163,6 +163,8 @@ bash scripts/serve_gpu4.sh $POLICY_MODEL_PATH $VALUE_MODEL_PATH $HOST_ADDR $CONT
 
 #### Step 2: Run TTS methods
 
+We provide the following commands for different TTS methods.
+
 ##### CoT
 
 ```bash
@@ -170,11 +172,14 @@ cd src
 bash scripts/run.sh --method cot --LM $POLICY_MODEL_PATH --RM dummy --width 1 --num_seq 1
 ```
 
-##### Best-of-N
+##### Best-of-N (BoN)
+
+> [!NOTE] Configuring batch size for BoN and DVTS:
+> For instance, when running BoN on MATH-500, it processes 500 problems with each executing 256 times (determined by num_q). To enhance the compute efficiency, it is recommended to distribute the problems across multiple GPUs by adjusting the batch size (bs). For example, set bs to 500 for 256 GPUs or 16000 for 8 GPUs.
 
 ```bash
 cd src
-bash scripts/run.sh --method best_of_n --LM $POLICY_MODEL_PATH --RM $VALUE_MODEL_PATH --width 1 --num_seq 1 --num_q 256
+bash scripts/run.sh --method best_of_n --LM $POLICY_MODEL_PATH --RM $VALUE_MODEL_PATH --width 1 --num_seq 1 --num_q 256 --bs batch_size
 ```
 
 ##### Beam Search
@@ -188,8 +193,12 @@ bash scripts/run.sh --method beam_search --LM $POLICY_MODEL_PATH --RM $VALUE_MOD
 
 ```bash
 cd src
-bash scripts/run.sh --method beam_search --LM $POLICY_MODEL_PATH --RM $VALUE_MODEL_PATH --width 4 --num_seq 1 --num_q 64
+bash scripts/run.sh --method beam_search --LM $POLICY_MODEL_PATH --RM $VALUE_MODEL_PATH --width 4 --num_seq 1 --num_q 64 --bs batch_size
 ```
+
+#### Step 3: Post process the results
+
+For BoN and DVTS, no average result is computed by default. To compute the average, aggregate the "majority_vote" values from all jsonl files after processing all problems num_q times.
 
 
 
