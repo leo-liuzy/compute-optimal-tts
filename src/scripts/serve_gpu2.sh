@@ -77,31 +77,29 @@ do
     if [[ "$POLICY_MODEL_PATH" =~ "DeepSeek-R1" ]]; then
         max_model_length=32768
     fi
-    if [[ "$POLICY_MODEL_PATH" =~ "dummy" ]]; then
-        command="pwd"
+
+    if [[ "$POLICY_MODEL_PATH" =~ "DeepSeek-R1" ]]; then
+        max_model_length=32768
+        command="CUDA_VISIBLE_DEVICES=${GPU_LIST[$i-$NUM_RM_WORKER+1]} ${PYTHON_EXECUTABLE} -m reason.llm_service.workers.vllm_worker --max_model_length ${max_model_length} --num-gpus ${tensor_parallel_size} --gpu_memory_utilization ${gpu_memory_utilization} --swap_space 16 --model-path $POLICY_MODEL_PATH --controller-address http://$HOST_ADDR:$CONTROLLER_PORT --host $HOST_ADDR --port $WORKER_PORT --worker-address http://$HOST_ADDR:$WORKER_PORT"
+    elif [[ "$POLICY_MODEL_PATH" =~ "7B" ]]; then
+        command="CUDA_VISIBLE_DEVICES=${GPU_LIST[$i-$NUM_RM_WORKER+1]} ${PYTHON_EXECUTABLE} -m reason.llm_service.workers.vllm_worker --max_model_length ${max_model_length} --num-gpus ${tensor_parallel_size} --gpu_memory_utilization ${gpu_memory_utilization} --swap_space 16 --model-path $POLICY_MODEL_PATH --controller-address http://$HOST_ADDR:$CONTROLLER_PORT --host $HOST_ADDR --port $WORKER_PORT --worker-address http://$HOST_ADDR:$WORKER_PORT"
+    elif [[ "$POLICY_MODEL_PATH" =~ "32B" ]] && [[ ! "$VALUE_MODEL_PATH" =~ "dummy" ]]; then
+        command="CUDA_VISIBLE_DEVICES=${GPU_LIST[$i-$NUM_RM_WORKER+1]} ${PYTHON_EXECUTABLE} -m reason.llm_service.workers.vllm_worker --max_model_length ${max_model_length} --num-gpus ${tensor_parallel_size} --gpu_memory_utilization ${gpu_memory_utilization} --swap_space 16 --model-path $POLICY_MODEL_PATH --controller-address http://$HOST_ADDR:$CONTROLLER_PORT --host $HOST_ADDR --port $WORKER_PORT --worker-address http://$HOST_ADDR:$WORKER_PORT"
     else
-        if [[ "$POLICY_MODEL_PATH" =~ "DeepSeek-R1" ]]; then
-            max_model_length=32768
-            command="CUDA_VISIBLE_DEVICES=${GPU_LIST[$i-$NUM_RM_WORKER+1]} ${PYTHON_EXECUTABLE} -m reason.llm_service.workers.vllm_worker --max_model_length ${max_model_length} --num-gpus ${tensor_parallel_size} --gpu_memory_utilization ${gpu_memory_utilization} --swap_space 16 --model-path $POLICY_MODEL_PATH --controller-address http://$HOST_ADDR:$CONTROLLER_PORT --host $HOST_ADDR --port $WORKER_PORT --worker-address http://$HOST_ADDR:$WORKER_PORT"
-        elif [[ "$POLICY_MODEL_PATH" =~ "7B" ]]; then
-            command="CUDA_VISIBLE_DEVICES=${GPU_LIST[$i-$NUM_RM_WORKER+1]} ${PYTHON_EXECUTABLE} -m reason.llm_service.workers.vllm_worker --max_model_length ${max_model_length} --num-gpus ${tensor_parallel_size} --gpu_memory_utilization ${gpu_memory_utilization} --swap_space 16 --model-path $POLICY_MODEL_PATH --controller-address http://$HOST_ADDR:$CONTROLLER_PORT --host $HOST_ADDR --port $WORKER_PORT --worker-address http://$HOST_ADDR:$WORKER_PORT"
-        elif [[ "$POLICY_MODEL_PATH" =~ "32B" ]] && [[ ! "$VALUE_MODEL_PATH" =~ "dummy" ]]; then
-            command="CUDA_VISIBLE_DEVICES=${GPU_LIST[$i-$NUM_RM_WORKER+1]} ${PYTHON_EXECUTABLE} -m reason.llm_service.workers.vllm_worker --max_model_length ${max_model_length} --num-gpus ${tensor_parallel_size} --gpu_memory_utilization ${gpu_memory_utilization} --swap_space 16 --model-path $POLICY_MODEL_PATH --controller-address http://$HOST_ADDR:$CONTROLLER_PORT --host $HOST_ADDR --port $WORKER_PORT --worker-address http://$HOST_ADDR:$WORKER_PORT"
-        else
-            command="VLLM_WORKER_MULTIPROC_METHOD=spawn CUDA_VISIBLE_DEVICES=${GPU_LIST[$i-$NUM_RM_WORKER]},${GPU_LIST[$i-$NUM_RM_WORKER+1]} ${PYTHON_EXECUTABLE} -m reason.llm_service.workers.vllm_worker --max_model_length ${max_model_length} --num-gpus ${tensor_parallel_size} --gpu_memory_utilization ${gpu_memory_utilization} --enable_chunked_prefill --swap_space 16 --model-path $POLICY_MODEL_PATH --controller-address http://$HOST_ADDR:$CONTROLLER_PORT --host $HOST_ADDR --port $WORKER_PORT --worker-address http://$HOST_ADDR:$WORKER_PORT"
-        fi
-        if [[ $max_num_sequences -gt 0 ]]; then
-            command="$command --max_num_sequences $max_num_sequences"
-        fi
-        if [[ $enforce_eager == true ]]; then
-            command="$command --enforce-eager"
-        fi
-        if [[ $cpu_offload_gb -gt 0 ]]; then
-            command="$command --cpu-offload-gb $cpu_offload_gb"
-        fi
-        if [[ "$POLICY_MODEL_PATH" =~ "Qwen2.5-Math-1.5B" ]] || [[ "$POLICY_MODEL_PATH" =~ "Qwen2.5-Math-7B" ]] || [[ "$POLICY_MODEL_PATH" =~ "Qwen2.5-Math-72B" ]]; then
-            command="VLLM_ALLOW_LONG_MAX_MODEL_LEN=1 $command"
-        fi
+        command="VLLM_WORKER_MULTIPROC_METHOD=spawn CUDA_VISIBLE_DEVICES=${GPU_LIST[$i-$NUM_RM_WORKER]},${GPU_LIST[$i-$NUM_RM_WORKER+1]} ${PYTHON_EXECUTABLE} -m reason.llm_service.workers.vllm_worker --max_model_length ${max_model_length} --num-gpus ${tensor_parallel_size} --gpu_memory_utilization ${gpu_memory_utilization} --enable_chunked_prefill --swap_space 16 --model-path $POLICY_MODEL_PATH --controller-address http://$HOST_ADDR:$CONTROLLER_PORT --host $HOST_ADDR --port $WORKER_PORT --worker-address http://$HOST_ADDR:$WORKER_PORT"
+    fi
+    if [[ $max_num_sequences -gt 0 ]]; then
+        command="$command --max_num_sequences $max_num_sequences"
+    fi
+    if [[ $enforce_eager == true ]]; then
+        command="$command --enforce-eager"
+    fi
+    if [[ $cpu_offload_gb -gt 0 ]]; then
+        command="$command --cpu-offload-gb $cpu_offload_gb"
+    fi
+    if [[ "$POLICY_MODEL_PATH" =~ "Qwen2.5-Math-1.5B" ]] || [[ "$POLICY_MODEL_PATH" =~ "Qwen2.5-Math-7B" ]] || [[ "$POLICY_MODEL_PATH" =~ "Qwen2.5-Math-72B" ]]; then
+        command="VLLM_ALLOW_LONG_MAX_MODEL_LEN=1 $command"
+    fi
     fi
 
     tmux send-keys "$command" Enter
