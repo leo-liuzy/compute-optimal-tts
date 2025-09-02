@@ -33,24 +33,28 @@ cot_prompt_dict = {
     'llama_official': """Solve the following math problem efficiently and clearly:\n\n- For simple problems (2 steps or fewer):\nProvide a concise solution with minimal explanation.\n\n- For complex problems (3 steps or more):\nUse this step-by-step format:\n\n## Step 1: [Concise description]\n[Brief explanation and calculations]\n\n## Step 2: [Concise description]\n[Brief explanation and calculations]\n\n...\n\nRegardless of the approach, always conclude with:\n\nTherefore, the final answer is: $\\boxed{answer}$. I hope it is correct.\n\nWhere [answer] is just the final number or expression that solves the problem.""",
     'qwen': """Please reason step by step, and put your final answer within \\boxed{}.""",
     'default': """Please reason step by step, and put your final answer within \\boxed{}.""",
+    'step-annotation': """Please reason step by step, and put your final answer within \\boxed{}.""",
 }
 
 llm_step_tag_dict = {
     'llama': "## Step ",
     'qwen': "\nStep ",
     'default': "\nStep ",
+    'step-annotation': "<step>",
 }
 
 sep_dict = {
     'llama': ["## Step"],
     'qwen': ["\nStep"],
     'default': ["\nStep"],
+    'step-annotation': ["<step>"],
 }
 
 stop_str_dict = {
     'llama': ["\\boxed"],
     'qwen': ["\\boxed"],
     'default': ["\\boxed"],
+    'step-annotation': ["\\boxed"],
 }
 
 if __name__ == "__main__":
@@ -113,6 +117,11 @@ if __name__ == "__main__":
         args.llm_step_tag = llm_step_tag_dict['default']
         args.sep = sep_dict['default']
         args.stop_str = stop_str_dict['default']
+    elif 'step-annotation' in args.LM.lower():
+        args.cot_prompt = cot_prompt_dict['step-annotation']
+        args.llm_step_tag = llm_step_tag_dict['step-annotation']
+        args.sep = sep_dict['step-annotation']
+        args.stop_str = stop_str_dict['step-annotation']
     else:
         args.cot_prompt = cot_prompt_dict['default']
         args.llm_step_tag = llm_step_tag_dict['default']

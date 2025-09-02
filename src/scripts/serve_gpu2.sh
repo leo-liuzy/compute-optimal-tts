@@ -1,18 +1,18 @@
 #!/bin/bash
 
-conda activate tts
+# conda activate tts
 
 POLICY_MODEL_PATH=$1
 VALUE_MODEL_PATH=$2
 NUM_RM_WORKER=1
 NUM_LM_WORKER=1
 
-export CUDA_VISIBLE_DEVICES=0,1
+export CUDA_VISIBLE_DEVICES=6,7
 echo "CUDA_VISIBLE_DEVICES: $CUDA_VISIBLE_DEVICES"
 n_gpus=$(echo $CUDA_VISIBLE_DEVICES | tr ',' '\n' | wc -l)
 echo "n_gpus: $n_gpus"
 
-GPU_LIST=(0 1)
+GPU_LIST=(6 7)
 echo "GPU_LIST:"
 echo "${GPU_LIST[@]}"
 
