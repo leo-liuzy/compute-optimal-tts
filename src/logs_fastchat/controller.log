@@ -1,5 +1,44 @@
+<<<<<<< HEAD
 2025-08-26 01:10:49 | INFO | controller | args: Namespace(host='0.0.0.0', port=10014, dispatch_method='shortest_queue', ssl=False)
 2025-08-26 01:10:49 | ERROR | stderr | [32mINFO[0m:     Started server process [[36m3300595[0m]
 2025-08-26 01:10:49 | ERROR | stderr | [32mINFO[0m:     Waiting for application startup.
 2025-08-26 01:10:49 | ERROR | stderr | [32mINFO[0m:     Application startup complete.
 2025-08-26 01:10:49 | ERROR | stderr | [32mINFO[0m:     Uvicorn running on [1mhttp://0.0.0.0:10014[0m (Press CTRL+C to quit)
+=======
+2025-08-25 19:46:03 | INFO | controller | args: Namespace(host='0.0.0.0', port=10014, dispatch_method='shortest_queue', ssl=False)
+2025-08-25 19:46:03 | ERROR | stderr | [32mINFO[0m:     Started server process [[36m364382[0m]
+2025-08-25 19:46:03 | ERROR | stderr | [32mINFO[0m:     Waiting for application startup.
+2025-08-25 19:46:03 | ERROR | stderr | [32mINFO[0m:     Application startup complete.
+2025-08-25 19:46:03 | ERROR | stderr | [32mINFO[0m:     Uvicorn running on [1mhttp://0.0.0.0:10014[0m (Press CTRL+C to quit)
+2025-08-25 19:54:19 | INFO | controller | args: Namespace(host='0.0.0.0', port=10014, dispatch_method='shortest_queue', ssl=False)
+2025-08-25 19:54:19 | ERROR | stderr | [32mINFO[0m:     Started server process [[36m381132[0m]
+2025-08-25 19:54:19 | ERROR | stderr | [32mINFO[0m:     Waiting for application startup.
+2025-08-25 19:54:19 | ERROR | stderr | [32mINFO[0m:     Application startup complete.
+2025-08-25 19:54:19 | ERROR | stderr | [32mINFO[0m:     Uvicorn running on [1mhttp://0.0.0.0:10014[0m (Press CTRL+C to quit)
+2025-08-25 20:09:16 | INFO | controller | args: Namespace(host='0.0.0.0', port=10014, dispatch_method='shortest_queue', ssl=False)
+2025-08-25 20:09:16 | ERROR | stderr | [32mINFO[0m:     Started server process [[36m413110[0m]
+2025-08-25 20:09:16 | ERROR | stderr | [32mINFO[0m:     Waiting for application startup.
+2025-08-25 20:09:16 | ERROR | stderr | [32mINFO[0m:     Application startup complete.
+2025-08-25 20:09:16 | ERROR | stderr | [32mINFO[0m:     Uvicorn running on [1mhttp://0.0.0.0:10014[0m (Press CTRL+C to quit)
+2025-08-25 20:09:34 | INFO | controller | Register a new worker: http://0.0.0.0:10081
+2025-08-25 20:09:34 | INFO | controller | Register done: http://0.0.0.0:10081, {'model_names': ['Qwen/Qwen2.5-Math-PRM-7B'], 'speed': 1, 'queue_length': 0}
+2025-08-25 20:09:34 | INFO | stdout | [32mINFO[0m:     127.0.0.1:33450 - "[1mPOST /register_worker HTTP/1.1[0m" [32m200 OK[0m
+2025-08-25 20:10:18 | INFO | controller | args: Namespace(host='0.0.0.0', port=10014, dispatch_method='shortest_queue', ssl=False)
+2025-08-25 20:10:18 | ERROR | stderr | [32mINFO[0m:     Started server process [[36m416958[0m]
+2025-08-25 20:10:18 | ERROR | stderr | [32mINFO[0m:     Waiting for application startup.
+2025-08-25 20:10:18 | ERROR | stderr | [32mINFO[0m:     Application startup complete.
+2025-08-25 20:10:18 | ERROR | stderr | [32mINFO[0m:     Uvicorn running on [1mhttp://0.0.0.0:10014[0m (Press CTRL+C to quit)
+2025-08-25 20:10:36 | INFO | controller | Register a new worker: http://0.0.0.0:10081
+2025-08-25 20:10:36 | INFO | controller | Register done: http://0.0.0.0:10081, {'model_names': ['Qwen/Qwen2.5-Math-PRM-7B'], 'speed': 1, 'queue_length': 0}
+2025-08-25 20:10:36 | INFO | stdout | [32mINFO[0m:     127.0.0.1:54784 - "[1mPOST /register_worker HTTP/1.1[0m" [32m200 OK[0m
+2025-08-25 20:11:21 | INFO | controller | Receive heart beat. http://0.0.0.0:10081
+2025-08-25 20:11:21 | INFO | stdout | [32mINFO[0m:     127.0.0.1:40948 - "[1mPOST /receive_heart_beat HTTP/1.1[0m" [32m200 OK[0m
+2025-08-25 20:12:06 | INFO | controller | Receive heart beat. http://0.0.0.0:10081
+2025-08-25 20:12:06 | INFO | stdout | [32mINFO[0m:     127.0.0.1:37718 - "[1mPOST /receive_heart_beat HTTP/1.1[0m" [32m200 OK[0m
+2025-08-25 20:12:51 | INFO | controller | Receive heart beat. http://0.0.0.0:10081
+2025-08-25 20:12:51 | INFO | stdout | [32mINFO[0m:     127.0.0.1:55346 - "[1mPOST /receive_heart_beat HTTP/1.1[0m" [32m200 OK[0m
+2025-08-25 20:13:36 | INFO | controller | Receive heart beat. http://0.0.0.0:10081
+2025-08-25 20:13:36 | INFO | stdout | [32mINFO[0m:     127.0.0.1:54720 - "[1mPOST /receive_heart_beat HTTP/1.1[0m" [32m200 OK[0m
+2025-08-25 20:14:21 | INFO | controller | Receive heart beat. http://0.0.0.0:10081
+2025-08-25 20:14:21 | INFO | stdout | [32mINFO[0m:     127.0.0.1:44006 - "[1mPOST /receive_heart_beat HTTP/1.1[0m" [32m200 OK[0m
+>>>>>>> 36a359ef75773825861f79cb049c22870b8a3cde

@@ -34,6 +34,7 @@ cot_prompt_dict = {
     'qwen': """Please reason step by step, and put your final answer within \\boxed{}.""",
     'deepseek-r1': """Please reason step by step, and put your final answer within \\boxed{}.""",
     'default': """Please reason step by step, and put your final answer within \\boxed{}.""",
+    'step-annotation': """Please reason step by step, and put your final answer within \\boxed{}.""",
 }
 
 llm_step_tag_dict = {
@@ -41,6 +42,7 @@ llm_step_tag_dict = {
     'qwen': "\nStep ",
     'deepseek-r1': "\n\n",
     'default': "\nStep ",
+    'step-annotation': "</step>",
 }
 
 sep_dict = {
@@ -48,6 +50,7 @@ sep_dict = {
     'qwen': ["\nStep"],
     'deepseek-r1': ["\n\n"],
     'default': ["\nStep"],
+    'step-annotation': ["</step>"],
 }
 
 stop_str_dict = {
@@ -55,6 +58,7 @@ stop_str_dict = {
     'qwen': ["\\boxed"],
     'deepseek-r1': ["\\boxed"],
     'default': ["\\boxed"],
+    'step-annotation': ["\\boxed"],
 }
 
 if __name__ == "__main__":
@@ -117,6 +121,11 @@ if __name__ == "__main__":
         args.llm_step_tag = llm_step_tag_dict['deepseek-r1']
         args.sep = sep_dict['deepseek-r1']
         args.stop_str = stop_str_dict['deepseek-r1']
+    elif 'step-annotation' in args.LM.lower():
+        args.cot_prompt = cot_prompt_dict['step-annotation']
+        args.llm_step_tag = llm_step_tag_dict['step-annotation']
+        args.sep = sep_dict['step-annotation']
+        args.stop_str = stop_str_dict['step-annotation']
     else:
         args.cot_prompt = cot_prompt_dict['default']
         args.llm_step_tag = llm_step_tag_dict['default']
