@@ -1,0 +1,100 @@
+2025-08-26 01:11:01 | ERROR | stderr | Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+2025-08-26 01:11:01 | ERROR | stderr | 
+2025-08-26 01:11:29 | ERROR | stderr | Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:28<01:24, 28.09s/it]
+2025-08-26 01:11:29 | ERROR | stderr | 
+2025-08-26 01:11:36 | ERROR | stderr | Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:34<00:31, 15.60s/it]
+2025-08-26 01:11:36 | ERROR | stderr | 
+2025-08-26 01:12:03 | ERROR | stderr | Loading safetensors checkpoint shards:  75% Completed | 3/4 [01:02<00:21, 21.03s/it]
+2025-08-26 01:12:03 | ERROR | stderr | 
+2025-08-26 01:12:33 | ERROR | stderr | Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:32<00:00, 24.43s/it]
+2025-08-26 01:12:33 | ERROR | stderr | 
+2025-08-26 01:12:33 | ERROR | stderr | Loading safetensors checkpoint shards: 100% Completed | 4/4 [01:32<00:00, 23.02s/it]
+2025-08-26 01:12:33 | ERROR | stderr | 
+2025-08-26 01:12:33 | ERROR | stderr | 
+2025-08-26 01:12:40 | ERROR | stderr | Capturing CUDA graph shapes:   0%|                                                                                                                                                        | 0/35 [00:00<?, ?it/s]
+2025-08-26 01:12:41 | ERROR | stderr | Capturing CUDA graph shapes:   3%|████                                                                                                                                            | 1/35 [00:00<00:17,  1.98it/s]
+2025-08-26 01:12:42 | ERROR | stderr | Capturing CUDA graph shapes:   6%|████████▏                                                                                                                                       | 2/35 [00:01<00:22,  1.44it/s]
+2025-08-26 01:12:42 | ERROR | stderr | Capturing CUDA graph shapes:   9%|████████████▎                                                                                                                                   | 3/35 [00:01<00:19,  1.64it/s]
+2025-08-26 01:12:43 | ERROR | stderr | Capturing CUDA graph shapes:  11%|████████████████▍                                                                                                                               | 4/35 [00:02<00:17,  1.77it/s]
+2025-08-26 01:12:43 | ERROR | stderr | Capturing CUDA graph shapes:  14%|████████████████████▌                                                                                                                           | 5/35 [00:02<00:16,  1.85it/s]
+2025-08-26 01:12:44 | ERROR | stderr | Capturing CUDA graph shapes:  17%|████████████████████████▋                                                                                                                       | 6/35 [00:03<00:15,  1.91it/s]
+2025-08-26 01:12:45 | ERROR | stderr | Capturing CUDA graph shapes:  20%|████████████████████████████▊                                                                                                                   | 7/35 [00:04<00:18,  1.49it/s]
+2025-08-26 01:12:45 | ERROR | stderr | Capturing CUDA graph shapes:  23%|████████████████████████████████▉                                                                                                               | 8/35 [00:04<00:16,  1.63it/s]
+2025-08-26 01:12:46 | ERROR | stderr | Capturing CUDA graph shapes:  26%|█████████████████████████████████████                                                                                                           | 9/35 [00:05<00:14,  1.75it/s]
+2025-08-26 01:12:46 | ERROR | stderr | Capturing CUDA graph shapes:  29%|████████████████████████████████████████▊                                                                                                      | 10/35 [00:05<00:13,  1.84it/s]
+2025-08-26 01:12:47 | ERROR | stderr | Capturing CUDA graph shapes:  31%|████████████████████████████████████████████▉                                                                                                  | 11/35 [00:06<00:13,  1.84it/s]
+2025-08-26 01:12:48 | ERROR | stderr | Capturing CUDA graph shapes:  34%|█████████████████████████████████████████████████                                                                                              | 12/35 [00:07<00:15,  1.52it/s]
+2025-08-26 01:12:48 | ERROR | stderr | Capturing CUDA graph shapes:  37%|█████████████████████████████████████████████████████                                                                                          | 13/35 [00:07<00:13,  1.66it/s]
+2025-08-26 01:12:48 | ERROR | stderr | Capturing CUDA graph shapes:  40%|█████████████████████████████████████████████████████████▏                                                                                     | 14/35 [00:08<00:11,  1.77it/s]
+2025-08-26 01:12:49 | ERROR | stderr | Capturing CUDA graph shapes:  43%|█████████████████████████████████████████████████████████████▎                                                                                 | 15/35 [00:08<00:10,  1.86it/s]
+2025-08-26 01:12:50 | ERROR | stderr | Capturing CUDA graph shapes:  46%|█████████████████████████████████████████████████████████████████▎                                                                             | 16/35 [00:09<00:12,  1.55it/s]
+2025-08-26 01:12:50 | ERROR | stderr | Capturing CUDA graph shapes:  49%|█████████████████████████████████████████████████████████████████████▍                                                                         | 17/35 [00:10<00:10,  1.69it/s]
+2025-08-26 01:12:51 | ERROR | stderr | Capturing CUDA graph shapes:  51%|█████████████████████████████████████████████████████████████████████████▌                                                                     | 18/35 [00:10<00:09,  1.81it/s]
+2025-08-26 01:12:51 | ERROR | stderr | Capturing CUDA graph shapes:  54%|█████████████████████████████████████████████████████████████████████████████▋                                                                 | 19/35 [00:10<00:08,  1.90it/s]
+2025-08-26 01:12:52 | ERROR | stderr | Capturing CUDA graph shapes:  57%|█████████████████████████████████████████████████████████████████████████████████▋                                                             | 20/35 [00:11<00:07,  1.98it/s]
+2025-08-26 01:12:53 | ERROR | stderr | Capturing CUDA graph shapes:  60%|█████████████████████████████████████████████████████████████████████████████████████▊                                                         | 21/35 [00:12<00:08,  1.70it/s]
+2025-08-26 01:12:53 | ERROR | stderr | Capturing CUDA graph shapes:  63%|█████████████████████████████████████████████████████████████████████████████████████████▉                                                     | 22/35 [00:12<00:07,  1.81it/s]
+2025-08-26 01:12:53 | ERROR | stderr | Capturing CUDA graph shapes:  66%|█████████████████████████████████████████████████████████████████████████████████████████████▉                                                 | 23/35 [00:13<00:06,  1.90it/s]
+2025-08-26 01:12:54 | ERROR | stderr | Capturing CUDA graph shapes:  69%|██████████████████████████████████████████████████████████████████████████████████████████████████                                             | 24/35 [00:13<00:05,  1.97it/s]
+2025-08-26 01:12:54 | ERROR | stderr | Capturing CUDA graph shapes:  71%|██████████████████████████████████████████████████████████████████████████████████████████████████████▏                                        | 25/35 [00:14<00:04,  2.03it/s]
+2025-08-26 01:12:55 | ERROR | stderr | Capturing CUDA graph shapes:  74%|██████████████████████████████████████████████████████████████████████████████████████████████████████████▏                                    | 26/35 [00:14<00:05,  1.67it/s]
+2025-08-26 01:12:56 | ERROR | stderr | Capturing CUDA graph shapes:  77%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████▎                                | 27/35 [00:15<00:04,  1.79it/s]
+2025-08-26 01:12:56 | ERROR | stderr | Capturing CUDA graph shapes:  80%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍                            | 28/35 [00:15<00:03,  1.89it/s]
+2025-08-26 01:12:57 | ERROR | stderr | Capturing CUDA graph shapes:  83%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍                        | 29/35 [00:16<00:03,  1.97it/s]
+2025-08-26 01:12:57 | ERROR | stderr | Capturing CUDA graph shapes:  86%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                    | 30/35 [00:16<00:02,  2.03it/s]
+2025-08-26 01:12:58 | ERROR | stderr | Capturing CUDA graph shapes:  89%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋                | 31/35 [00:17<00:02,  1.51it/s]
+2025-08-26 01:12:59 | ERROR | stderr | Capturing CUDA graph shapes:  91%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋            | 32/35 [00:18<00:01,  1.66it/s]
+2025-08-26 01:12:59 | ERROR | stderr | Capturing CUDA graph shapes:  94%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊        | 33/35 [00:18<00:01,  1.80it/s]
+2025-08-26 01:12:59 | ERROR | stderr | Capturing CUDA graph shapes:  97%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉    | 34/35 [00:19<00:00,  1.90it/s]
+2025-08-26 01:13:00 | ERROR | stderr | Capturing CUDA graph shapes: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 35/35 [00:19<00:00,  1.99it/s]
+2025-08-26 01:13:00 | ERROR | stderr | Capturing CUDA graph shapes: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 35/35 [00:19<00:00,  1.79it/s]
+2025-08-26 01:13:00 | ERROR | stderr | 
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]: Traceback (most recent call last):
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/home/zliu/miniconda3/envs/tts/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 1793, in _get_module
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     return importlib.import_module("." + module_name, self.__name__)
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/home/zliu/miniconda3/envs/tts/lib/python3.10/importlib/__init__.py", line 126, in import_module
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     return _bootstrap._gcd_import(name[level:], package, level)
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/home/zliu/miniconda3/envs/tts/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 31, in <module>
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     from ...modeling_flash_attention_utils import FlashAttentionKwargs, _flash_attention_forward
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/home/zliu/miniconda3/envs/tts/lib/python3.10/site-packages/transformers/modeling_flash_attention_utils.py", line 30, in <module>
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     from flash_attn.bert_padding import index_first_axis, pad_input, unpad_input  # noqa
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/home/zliu/miniconda3/envs/tts/lib/python3.10/site-packages/flash_attn/__init__.py", line 3, in <module>
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     from flash_attn.flash_attn_interface import (
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/home/zliu/miniconda3/envs/tts/lib/python3.10/site-packages/flash_attn/flash_attn_interface.py", line 15, in <module>
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     import flash_attn_2_cuda as flash_attn_gpu
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]: ImportError: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.32' not found (required by /home/zliu/miniconda3/envs/tts/lib/python3.10/site-packages/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so)
+2025-08-26 01:13:00 | ERROR | stderr | 
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]: The above exception was the direct cause of the following exception:
+2025-08-26 01:13:00 | ERROR | stderr | 
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]: Traceback (most recent call last):
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/home/zliu/miniconda3/envs/tts/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     return _run_code(code, main_globals, None,
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/home/zliu/miniconda3/envs/tts/lib/python3.10/runpy.py", line 86, in _run_code
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     exec(code, run_globals)
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/data/users/zliu/compute-optimal-tts/src/reason/llm_service/workers/vllm_worker.py", line 272, in <module>
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     worker = VLLMWorker(
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/data/users/zliu/compute-optimal-tts/src/reason/llm_service/workers/vllm_worker.py", line 44, in __init__
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     super().__init__(
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/data/users/zliu/compute-optimal-tts/src/reason/llm_service/workers/base_model_worker.py", line 54, in __init__
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     self.conv = self.make_conv_template(conv_template, model_path)
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/data/users/zliu/compute-optimal-tts/src/reason/llm_service/workers/base_model_worker.py", line 74, in make_conv_template
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     from fastchat.model.model_adapter import get_conversation_template
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/home/zliu/miniconda3/envs/tts/lib/python3.10/site-packages/fastchat/model/__init__.py", line 1, in <module>
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     from fastchat.model.model_adapter import (
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/home/zliu/miniconda3/envs/tts/lib/python3.10/site-packages/fastchat/model/model_adapter.py", line 17, in <module>
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     from transformers import (
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "<frozen importlib._bootstrap>", line 1075, in _handle_fromlist
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/home/zliu/miniconda3/envs/tts/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 1782, in __getattr__
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     value = getattr(module, name)
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/home/zliu/miniconda3/envs/tts/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 1781, in __getattr__
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     module = self._get_module(self._class_to_module[name])
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:   File "/home/zliu/miniconda3/envs/tts/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 1795, in _get_module
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]:     raise RuntimeError(
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]: RuntimeError: Failed to import transformers.models.llama.modeling_llama because of the following error (look up to see its traceback):
+2025-08-26 01:13:00 | ERROR | stderr | [rank0]: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.32' not found (required by /home/zliu/miniconda3/envs/tts/lib/python3.10/site-packages/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so)

@@ -1,0 +1,5 @@
+2025-08-26 01:10:49 | INFO | controller | args: Namespace(host='0.0.0.0', port=10014, dispatch_method='shortest_queue', ssl=False)
+2025-08-26 01:10:49 | ERROR | stderr | [32mINFO[0m:     Started server process [[36m3300595[0m]
+2025-08-26 01:10:49 | ERROR | stderr | [32mINFO[0m:     Waiting for application startup.
+2025-08-26 01:10:49 | ERROR | stderr | [32mINFO[0m:     Application startup complete.
+2025-08-26 01:10:49 | ERROR | stderr | [32mINFO[0m:     Uvicorn running on [1mhttp://0.0.0.0:10014[0m (Press CTRL+C to quit)

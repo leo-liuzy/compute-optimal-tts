@@ -32,24 +32,28 @@ from utils import check_process_cnt, assign_tasks, get_model_name, setup_seed, c
 cot_prompt_dict = {
     'llama_official': """Solve the following math problem efficiently and clearly:\n\n- For simple problems (2 steps or fewer):\nProvide a concise solution with minimal explanation.\n\n- For complex problems (3 steps or more):\nUse this step-by-step format:\n\n## Step 1: [Concise description]\n[Brief explanation and calculations]\n\n## Step 2: [Concise description]\n[Brief explanation and calculations]\n\n...\n\nRegardless of the approach, always conclude with:\n\nTherefore, the final answer is: $\\boxed{answer}$. I hope it is correct.\n\nWhere [answer] is just the final number or expression that solves the problem.""",
     'qwen': """Please reason step by step, and put your final answer within \\boxed{}.""",
+    'deepseek-r1': """Please reason step by step, and put your final answer within \\boxed{}.""",
     'default': """Please reason step by step, and put your final answer within \\boxed{}.""",
 }
 
 llm_step_tag_dict = {
     'llama': "## Step ",
     'qwen': "\nStep ",
+    'deepseek-r1': "\n\n",
     'default': "\nStep ",
 }
 
 sep_dict = {
     'llama': ["## Step"],
     'qwen': ["\nStep"],
+    'deepseek-r1': ["\n\n"],
     'default': ["\nStep"],
 }
 
 stop_str_dict = {
     'llama': ["\\boxed"],
     'qwen': ["\\boxed"],
+    'deepseek-r1': ["\\boxed"],
     'default': ["\\boxed"],
 }
 
@@ -109,10 +113,10 @@ if __name__ == "__main__":
         args.sep = sep_dict['qwen']
         args.stop_str = stop_str_dict['qwen']
     elif 'deepseek-r1' in args.LM.lower():
-        args.cot_prompt = cot_prompt_dict['default']
-        args.llm_step_tag = llm_step_tag_dict['default']
-        args.sep = sep_dict['default']
-        args.stop_str = stop_str_dict['default']
+        args.cot_prompt = cot_prompt_dict['deepseek-r1']
+        args.llm_step_tag = llm_step_tag_dict['deepseek-r1']
+        args.sep = sep_dict['deepseek-r1']
+        args.stop_str = stop_str_dict['deepseek-r1']
     else:
         args.cot_prompt = cot_prompt_dict['default']
         args.llm_step_tag = llm_step_tag_dict['default']
