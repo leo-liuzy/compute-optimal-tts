@@ -283,6 +283,7 @@ class SearchTree:
         for i in range(max_step + 1):
             cur_nodes_to_search = top_k_nodes
             top_k_nodes = []
+            print("Beam search step: ", i)
             for cur_neg_q_plus_a, cur_neg_v, cur_neg_parent_v, cur_node, cur_env in cur_nodes_to_search:
                 if cur_node.terminated:
                     end_nodes.append((cur_neg_q_plus_a, cur_neg_v, cur_neg_parent_v, cur_node, cur_env))
