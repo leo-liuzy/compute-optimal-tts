@@ -56,6 +56,8 @@ class VLLMRemoteCaller(LanguageModelCallingFunction):
         super().__init__(llm_step_tag)
 
     def __call__(self, messages: str, config: LMCallingConfig) -> ConcatedLMGenResult:
+        print("Messages: ", messages)
+        
         if self.serve_type == "fastchat":
             return _generate_fastchat(
                 messages=messages,

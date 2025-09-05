@@ -1,9 +1,5 @@
 vllm # ==0.6.4.post1
-<<<<<<< HEAD
-torch==2.5.1
-=======
 # torch==2.5.1
->>>>>>> 36a359ef75773825861f79cb049c22870b8a3cde
 transformers==4.47.0
 dm-env
 dm-tree
