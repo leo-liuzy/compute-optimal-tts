@@ -52,7 +52,7 @@ class Task:
         return get_default_query_str_builder(self.task_name)(problem_input, is_few_shot=self._is_few_shot, model_names=self.model_names)
 
     def test_ds(self, task_name):
-        return get_env_datasets(task_name)[1]
+        return get_env_datasets(task_name)[1][:1]
 
 
 CHOSEN_AGGR_METHODS = [
