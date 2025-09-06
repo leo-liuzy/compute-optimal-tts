@@ -254,6 +254,7 @@ class CoTEnv(BaseEnv):
             else:
                 stop_str, include_stop_str_in_output = self.sep, True
             first_generation = len(self.action_history) == 0
+
             messages = self.get_state(self.llm_gen_fns[0].model_name, add_step_prompt=self.add_step_prompt)
             result: ConcatedLMGenResult = self.llm_gen_fns[0](
                 messages=messages,
