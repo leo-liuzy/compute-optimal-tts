@@ -32,12 +32,11 @@ def process_prompt(prompt: str, tokenizer: AutoTokenizer, model_name, double_lin
     elif prompt.endswith(eos_token):
         prompt = prompt[:-len(eos_token)]
 
-    if double_line_break == 1:
+    if double_line_break == 1 or double_line_break == 2:
         if 'llama-3' in model_name.lower() and 'meta-llama' in model_name.lower():
             if not prompt.endswith('\n\n'):
                 prompt += '\n\n'
-    elif double_line_break == 2:
-        if 'llama-3' in model_name.lower() and 'meta-llama' in model_name.lower():
+        elif "deepseek-r1" in model_name.lower():
             if not prompt.endswith('\n\n'):
                 prompt += '\n\n'
 
