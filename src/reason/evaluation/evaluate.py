@@ -208,8 +208,6 @@ if __name__ == "__main__":
         last_time = start_time
 
         for i, (problem_inst, result, output) in enumerate(res_q):
-            if i != 35:
-                continue
             if len(output) == 0:
                 continue
             obj = {"question": problem_inst["question"], "groundtruth": problem_inst["answer"], "result": result, "output": output}

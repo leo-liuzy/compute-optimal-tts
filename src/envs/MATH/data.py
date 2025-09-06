@@ -12,7 +12,7 @@ def get_train_test_dataset(env_name, *args, **kwargs):
     train_ds = None
     if env_name == 'MATH':
         print(f'Loading MATH dataset')
-        test_ds = JsonlMathDataset(env_dir / "dataset/test500.jsonl")
+        test_ds = JsonlMathDataset(env_dir / "dataset/test500_35.jsonl")
     elif env_name == 'AMC23':
         print(f'Loading AMC23 dataset')
         test_ds = JsonlMathDataset(env_dir / "dataset/test_amc.jsonl")
