@@ -217,6 +217,8 @@ class CoTEnv(BaseEnv):
 
     def get_state(self, model_name='other', add_step_prompt=False):
         messages = copy.deepcopy(self._init_query)
+        print("CoTEnv get_state self.action_history: ", self.action_history)
+        
         messages.append({"role": "assistant", "content": "".join(self.action_history)})
 
         if add_step_prompt and self.direct_io != 2:
@@ -264,6 +266,7 @@ class CoTEnv(BaseEnv):
                 ),
             )
             texts = result.text  # [text1, text2]
+            print("CoTEnv update_legal_actions texts: ", texts)
             logps_avg_by_len = result.logp_avg_by_len  # [-0.10557132510029904, -0.23053854329903292]
             token_len = result.num_tokens  # [212, 192]
             temp_model_names = [self.llm_gen_fns[0].model_name] * len(texts)
@@ -293,8 +296,14 @@ class CoTEnv(BaseEnv):
                         if texts[i].endswith(sep):
                             terminated = False
                             break
+            print("CoTEnv update_legal_actions texts[i]: ", texts[i])
             processed_act = self.post_process_act(texts[i])
+            print("CoTEnv update_legal_actions processed_act_i: ", processed_act)
             finish_reason = finish_reason_list[i]
+            print("CoTEnv update_legal_actions finish_reason_i: ", finish_reason)
+            print("CoTEnv update_legal_actions self.double_line_break: ", self.double_line_break)
+            print("CoTEnv update_legal_actions self.direct_io: ", self.direct_io)
+            print("CoTEnv update_legal_actions force_update: ", force_update)
             if not self.double_line_break:
                 temp_act = processed_act.replace("## Step ", "Step ")
                 is_double_line_break = temp_act.endswith("\n\n") and temp_act.startswith("Step ") and (len(temp_act) == len("Step 1: \n\n") or len(temp_act) == len("Step 10: \n\n"))

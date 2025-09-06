@@ -59,7 +59,7 @@ class VLLMRemoteCaller(LanguageModelCallingFunction):
         print("Messages: ", messages)
         
         if self.serve_type == "fastchat":
-            return _generate_fastchat(
+            ret = _generate_fastchat(
                 messages=messages,
                 model_name=self.model_name,
                 n=config.n,
@@ -78,7 +78,7 @@ class VLLMRemoteCaller(LanguageModelCallingFunction):
                 first_generation=config.first_generation,
             )
         elif self.serve_type == "sgl_api":
-            return _generate_sgl(
+            ret = _generate_sgl(
                 messages=messages,
                 model_name=self.model_name,
                 n=config.n,
@@ -96,3 +96,4 @@ class VLLMRemoteCaller(LanguageModelCallingFunction):
                 double_line_break=self.double_line_break,
                 first_generation=config.first_generation,
             )
+        return ret
