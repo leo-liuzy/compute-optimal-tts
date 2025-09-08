@@ -132,7 +132,7 @@ if __name__ == "__main__":
         args.sep = sep_dict['default']
         args.stop_str = stop_str_dict['default']
 
-    if args.double_line_break == 1:
+    if args.double_line_break == 1 and 'deepseek-r1' in args.LM.lower():
         args.sep = ["\n\n"]
 
     os.makedirs(args.save_dir, exist_ok=True)
@@ -252,9 +252,13 @@ if __name__ == "__main__":
 
 
     if 'deepseek-r1' in args.LM[0].lower():
-        args.temperature = 0.6
-        args.top_p = 0.95
-        args.max_new_tokens = 32768
+        # args.temperature = 0.6
+        # args.top_p = 0.95
+        # args.max_new_tokens = 32768
+        print("::: from evaulate.py::: args.LM[0]: ", args.LM[0], flush=True)
+        print("::: from evaulate.py::: args.temperature: ", args.temperature, flush=True)
+        print("::: from evaulate.py::: args.top_p: ", args.top_p, flush=True)
+        print("::: from evaulate.py::: args.max_new_tokens: ", args.max_new_tokens, flush=True)
 
     cfg_dict_record = dict()
     gen_config = LMCallingConfig(
@@ -328,7 +332,9 @@ if __name__ == "__main__":
     cfg_dict_record["method"] = args.method
     cfg_dict_record["method_config"] = method_config.__dict__
 
-    params = f'{args.tree_max_depth}_{args.tree_max_width}_{args.num_sequence}'
+    # params = f'{args.tree_max_depth}_{args.tree_max_width}_{args.num_sequence}'
+    params = f'{args.tree_max_depth}_{args.tree_max_width}_{args.num_sequence}_{args.temperature}_{args.top_p}_{args.max_new_tokens}'
+    
     model_name = get_model_name(args.LM[0])
     rm_model_name = get_model_name(args.RM)
     save_dir = f'{args.save_dir}/{args.task_name}_{args.method}/{model_name}/{rm_model_name}/{params}'

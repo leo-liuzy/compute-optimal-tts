@@ -42,6 +42,10 @@ while [[ $# -gt 0 ]]; do
         temperature="$2"
         shift 2
         ;;
+    --top_p)
+        top_p="$2"
+        shift 2
+        ;;
     --max_new_tokens)
         max_new_tokens="$2"
         shift 2
@@ -90,10 +94,11 @@ while [[ $# -gt 0 ]]; do
 done
 echo "LM: $LM, RM: $RM, task: $task_name, tree_max_width: $tree_max_width, num_sequence: $num_sequence, question_parallel_num: $question_parallel_num"
 echo "batch_size: $batch_size, max_time: $max_time, n_gpus: $n_gpus, double_line_break: $double_line_break"
-
+echo "temperature: $temperature, max_new_tokens: $max_new_tokens, top_p: $top_p"
 if [ $method == "beam_search" ]; then
-    temperature=0.7
-    max_new_tokens=2048
+    temperature=$temperature
+    max_new_tokens=$max_new_tokens
+    top_p=$top_p
     tree_max_depth=40
 elif [ $method == "best_of_n" ]; then
     temperature=0.7
@@ -101,24 +106,26 @@ elif [ $method == "best_of_n" ]; then
     tree_max_depth=1
 elif [ $method == "cot" ]; then
     temperature=0.0
-    max_new_tokens=8192
-    tree_max_depth=1
+    max_new_tokens=$max_new_tokens
+    # tree_max_depth=1
+    top_p=$top_p
+    tree_max_depth=40
 else
     echo "Invalid method: $method"
     exit
 fi
-if [[ "$LM" =~ "DeepSeek-R1" ]]; then
-    temperature=0.6
-    max_new_tokens=32768
-fi
+# if [[ "$LM" =~ "DeepSeek-R1" ]]; then
+#     temperature=0.6
+#     max_new_tokens=32768
+# fi
 POLICY_MODEL_PATH=${LM}
 VALUE_MODEL_PATH=${RM}
 
 export PYTHONPATH=$(pwd)
 cd ${PYTHONPATH}
 
-export CUDA_VISIBLE_DEVICES=0
-GPU_LIST=(0 0)
+export CUDA_VISIBLE_DEVICES=0,1
+GPU_LIST=(0 1)
 echo "CUDA_VISIBLE_DEVICES: $CUDA_VISIBLE_DEVICES, n_gpus: $n_gpus"
 echo "GPU_LIST:"
 echo "${GPU_LIST[@]}"
@@ -131,12 +138,15 @@ controller_addr=http://$HOST_ADDR:$CONTROLLER_PORT
 
 echo "Running $method evaluation ..."
 
+echo "::: from run.sh: "
+echo "::: from run.sh: temperature: $temperature, max_new_tokens: $max_new_tokens, top_p: $top_p"
 python reason/evaluation/evaluate.py \
     --LM $POLICY_MODEL_PATH \
     --RM $VALUE_MODEL_PATH \
     --task_name $task_name \
     --temperature $temperature \
     --max_new_tokens $max_new_tokens \
+    --top_p $top_p \
     --num_sequence $num_sequence \
     --tree_max_width $tree_max_width \
     --tree_max_depth $tree_max_depth \
